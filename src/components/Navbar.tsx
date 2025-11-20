@@ -10,6 +10,7 @@ export default function Navbar() {
         <nav className="flex gap-6">
           <Link href="/" className="text-gray-600 hover:text-primary">Home</Link>
           <Link href="/services" className="text-gray-600 hover:text-primary">Services</Link>
+          <Link href="/membership" className="text-primary font-medium hover:text-primary/80">Membership</Link>
           <Link href="/bookings" className="text-gray-600 hover:text-primary">My Bookings</Link>
         </nav>
         <div className="flex gap-4">

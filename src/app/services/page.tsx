@@ -6,47 +6,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Clock, ArrowRight, Check } from "lucide-react";
-
-// Mock data for now - in real app this comes from Supabase
-const services = [
-  {
-    id: '1',
-    category: 'Plumbing',
-    title: 'Replace Kitchen Tap',
-    description: 'We supply standard tap or fit yours. Includes removal of old tap and testing.',
-    price: 120,
-    duration: '60 mins',
-    features: ['Parts included', '1 year guarantee', 'Disposal of old tap']
-  },
-  {
-    id: '2',
-    category: 'Plumbing',
-    title: 'Unblock Sink',
-    description: 'Clear blockage in kitchen or bathroom sink using professional equipment.',
-    price: 85,
-    duration: '45 mins',
-    features: ['No chemicals used', 'Flow test included', 'Mess-free guarantee']
-  },
-  {
-    id: '3',
-    category: 'Heating',
-    title: 'Boiler Service',
-    description: 'Annual safety check and service to keep your warranty valid.',
-    price: 90,
-    duration: '60 mins',
-    features: ['Gas Safe registered', 'Certificate issued', 'Efficiency check']
-  },
-  {
-    id: '4',
-    category: 'Handyman',
-    title: 'General Handyman (1 Hour)',
-    description: 'Small repairs, hanging pictures, assembling furniture, etc.',
-    price: 85,
-    duration: '60 mins',
-    features: ['Tools provided', 'Multi-skilled', 'Clean & tidy']
-  }
-];
+import { Clock, ArrowRight, Check, Star } from "lucide-react";
+import { services } from "@/lib/data";
 
 export default function ServicesPage({
   searchParams,
@@ -96,7 +57,10 @@ export default function ServicesPage({
         >
           {filteredServices.map((service) => (
             <motion.div variants={item} key={service.id}>
-              <Card className="h-full flex flex-col hover:shadow-md transition-shadow duration-200">
+              <Card className="h-full flex flex-col hover:shadow-md transition-shadow duration-200 relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-bl-lg z-10">
+                  Fixed Price
+                </div>
                 <CardHeader>
                   <div className="flex justify-between items-start gap-4">
                     <div>
@@ -105,19 +69,31 @@ export default function ServicesPage({
                       </Badge>
                       <CardTitle className="text-xl">{service.title}</CardTitle>
                     </div>
-                    <div className="text-right">
-                      <span className="text-2xl font-bold text-primary">£{service.price}</span>
-                    </div>
                   </div>
                   <CardDescription className="text-base mt-2">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
                     <Clock className="h-4 w-4" />
                     <span>{service.duration}</span>
                   </div>
+                  
+                  <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-muted">
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="text-sm font-medium text-muted-foreground">Standard Price</span>
+                      <span className="text-lg font-bold text-muted-foreground line-through decoration-destructive/50">£{service.price}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-1.5">
+                        <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                        <span className="text-sm font-bold text-primary">Member Price</span>
+                      </div>
+                      <span className="text-2xl font-bold text-primary">£{service.memberPrice}</span>
+                    </div>
+                  </div>
+
                   <ul className="space-y-2">
                     {service.features?.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm">
