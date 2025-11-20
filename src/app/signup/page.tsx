@@ -11,12 +11,14 @@ import Link from "next/link"
 import { toast } from "sonner"
 import { Loader2 } from "lucide-react"
 
-export default function SignupPage() {
+export default function SignupPage({ searchParams }: { searchParams: { plan?: string } }) {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
   const router = useRouter()
   const supabase = createClientComponentClient()
+
+  const isPlus = searchParams.plan === 'annual' || searchParams.plan === 'monthly'
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -27,6 +29,9 @@ export default function SignupPage() {
       password,
       options: {
         emailRedirectTo: `${location.origin}/auth/callback`,
+        data: {
+          plan: searchParams.plan || 'free'
+        }
       },
     })
 
@@ -43,9 +48,13 @@ export default function SignupPage() {
     <div className="min-h-screen flex items-center justify-center bg-muted/30 px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold">Create an account</CardTitle>
+          <CardTitle className="text-2xl font-bold">
+            {isPlus ? "Join Hampstead Plus" : "Create an account"}
+          </CardTitle>
           <CardDescription>
-            Enter your email below to create your account
+            {isPlus 
+              ? "Create your account to unlock 15% off immediately." 
+              : "Enter your email below to create your account"}
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleSignup}>
