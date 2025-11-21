@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { format } from "date-fns"
-import { Loader2, Upload, CheckCircle2, Star } from "lucide-react"
+import { Loader2, Upload, CheckCircle2 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
@@ -243,15 +243,8 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                 
                 <div className="border-t pt-4 space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="font-medium">Standard Price</span>
-                    <span className="font-bold text-lg text-muted-foreground line-through decoration-destructive/50">£{service.price}</span>
-                  </div>
-                  <div className="flex justify-between items-center bg-primary/5 p-2 rounded-md -mx-2">
-                    <div className="flex items-center gap-1.5">
-                      <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                      <span className="font-bold text-primary text-sm">Member Price</span>
-                    </div>
-                    <span className="font-bold text-xl text-primary">£{service.memberPrice}</span>
+                    <span className="font-medium">Total Price</span>
+                    <span className="font-bold text-xl">£{service.price}</span>
                   </div>
                 </div>
                 

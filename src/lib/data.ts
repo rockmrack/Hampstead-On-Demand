@@ -1,19 +1,3 @@
-export const categories = [
-  { name: "Plumbing & Heating", icon: "droplet" },
-  { name: "Electrical", icon: "zap" },
-  { name: "Handyman", icon: "hammer" },
-  { name: "Carpentry", icon: "axe" },
-  { name: "Painting & Decorating", icon: "brush" },
-  { name: "Roofing & Gutters", icon: "cloud-rain" },
-  { name: "Drainage", icon: "waves" },
-  { name: "Locksmith & Security", icon: "lock" },
-  { name: "Glazing", icon: "maximize" },
-  { name: "Air Conditioning", icon: "wind" },
-  { name: "Major Renovations", icon: "home" },
-  { name: "Seasonal & Lifestyle", icon: "sun" },
-  { name: "Landlord Services", icon: "key" }
-];
-
 export const services = [
   // --- 1. PLUMBING (Aspect Match) ---
   {
@@ -22,7 +6,6 @@ export const services = [
     title: 'Boiler Service (Annual)',
     description: 'Full safety check & certificate (CP12). Essential for warranty validity.',
     price: 120.00,
-    memberPrice: 102.00,
     duration: '60 mins',
     features: ['Gas Safe Registered', 'CP12 Certificate', 'Efficiency Check']
   },
@@ -32,7 +15,6 @@ export const services = [
     title: 'Tap Repair / Replace',
     description: 'We supply standard tap or fit yours. Includes removal of old unit.',
     price: 130.00,
-    memberPrice: 110.50,
     duration: '60 mins',
     features: ['Removal of old tap', 'Testing', '12 Month Guarantee']
   },
@@ -42,7 +24,6 @@ export const services = [
     title: 'Toilet Unblock',
     description: 'Fixed price unblocking. Includes machinery if needed.',
     price: 160.00,
-    memberPrice: 136.00,
     duration: '60 mins',
     features: ['Sanitary cleanup', 'Flow test', 'No hidden fees']
   },
@@ -52,7 +33,6 @@ export const services = [
     title: 'Radiator Bleed (All)',
     description: 'Improve heating efficiency. Bleed all radiators in property.',
     price: 110.00,
-    memberPrice: 93.50,
     duration: '60 mins',
     features: ['System pressure check', 'Heat distribution test', 'Clean finish']
   },
@@ -62,7 +42,6 @@ export const services = [
     title: 'Leak Investigation',
     description: 'Diagnostic visit to identify source of leak.',
     price: 120.00,
-    memberPrice: 102.00,
     duration: '60 mins',
     features: ['Expert diagnosis', 'Minor repairs included', 'Damage assessment']
   },
@@ -72,7 +51,6 @@ export const services = [
     title: 'Gas Safety Cert (CP12)',
     description: 'Landlord Gas Safety Certificate for one appliance.',
     price: 110.00,
-    memberPrice: 93.50,
     duration: '45 mins',
     features: ['Legal requirement', 'Digital certificate', 'Safety check']
   },
@@ -84,7 +62,6 @@ export const services = [
     title: 'Replace Socket / Switch',
     description: 'Per unit. White plastic standard faceplate included.',
     price: 110.00,
-    memberPrice: 93.50,
     duration: '45 mins',
     features: ['Parts included', 'Safety test', 'Clean finish']
   },
@@ -94,7 +71,6 @@ export const services = [
     title: 'Hang Chandelier',
     description: 'Installation up to 3m ceiling height. Heavy duty fixings.',
     price: 180.00,
-    memberPrice: 153.00,
     duration: '90 mins',
     features: ['Load testing', 'Assembly included', 'Dimmer check']
   },
@@ -104,7 +80,6 @@ export const services = [
     title: 'EICR (1-2 Bed Flat)',
     description: 'Electrical safety check for landlords (1-2 Bed Flat).',
     price: 200.00,
-    memberPrice: 170.00,
     duration: '120 mins',
     features: ['NICEIC Certified', 'Digital Report', 'Legal Requirement']
   },
@@ -114,7 +89,6 @@ export const services = [
     title: 'Fault Finding',
     description: 'Diagnostic visit for tripping fuses or power loss.',
     price: 120.00,
-    memberPrice: 102.00,
     duration: '60 mins',
     features: ['Expert diagnosis', 'Minor repairs included', 'Safety Report']
   },
@@ -126,7 +100,6 @@ export const services = [
     title: 'General Handyman (1 Hour)',
     description: 'Small repairs, hanging pictures, etc.',
     price: 95.00,
-    memberPrice: 80.75,
     duration: '60 mins',
     features: ['Multi-skilled', 'Tools provided', 'Heavy lifting']
   },
@@ -136,7 +109,6 @@ export const services = [
     title: 'TV Wall Mounting',
     description: 'Up to 55 inch TV. Bracket not included (can be supplied).',
     price: 140.00,
-    memberPrice: 119.00,
     duration: '90 mins',
     features: ['Cable management', 'Solid/Stud wall', 'Level guarantee']
   },
@@ -146,7 +118,6 @@ export const services = [
     title: 'Hang Mirror / Art',
     description: 'Up to 3 items. Heavy duty fixings included for safety.',
     price: 85.00,
-    memberPrice: 72.25,
     duration: '45 mins',
     features: ['Laser level accuracy', 'Wall type assessment', 'Fixings supplied']
   },
@@ -156,7 +127,6 @@ export const services = [
     title: 'Flatpack Assembly (Large)',
     description: 'Wardrobe or Bed frame assembly.',
     price: 180.00,
-    memberPrice: 153.00,
     duration: '120 mins',
     features: ['Two person team', 'Anchoring to wall', 'Packaging removal']
   },
@@ -168,7 +138,6 @@ export const services = [
     title: 'Hang Internal Door',
     description: 'Trimming and hanging 1 standard door (door not included).',
     price: 160.00,
-    memberPrice: 136.00,
     duration: '90 mins',
     features: ['Hinge recessing', 'Latch fitting', 'Perfect fit guarantee']
   },
@@ -178,7 +147,6 @@ export const services = [
     title: 'Sash Window Cord Repair',
     description: 'Replace snapped cord (Lower sash). Per window.',
     price: 180.00,
-    memberPrice: 153.00,
     duration: '120 mins',
     features: ['New cord included', 'Weight balancing', 'Smooth operation']
   },
@@ -188,7 +156,6 @@ export const services = [
     title: 'Fit Door Lock/Latch',
     description: 'Install new handle/latch mechanism.',
     price: 110.00,
-    memberPrice: 93.50,
     duration: '60 mins',
     features: ['Security check', 'Keys tested', 'Clean installation']
   },
@@ -198,7 +165,6 @@ export const services = [
     title: 'Build Shelves (Alcove)',
     description: 'Labour only. Floating or batten shelves in 1 alcove.',
     price: 250.00,
-    memberPrice: 212.50,
     duration: '180 mins',
     features: ['Custom fit', 'Heavy duty support', 'Ready for paint']
   },
@@ -208,7 +174,6 @@ export const services = [
     title: 'Boxing In Pipework',
     description: 'Hide unsightly pipes in bathroom/kitchen.',
     price: 140.00,
-    memberPrice: 119.00,
     duration: '90 mins',
     features: ['Neat finish', 'Access panel if needed', 'Primed wood']
   },
@@ -220,7 +185,6 @@ export const services = [
     title: 'Painter for a Day (8 Hrs)',
     description: 'One professional decorator. You supply paint.',
     price: 550.00,
-    memberPrice: 467.50,
     duration: '480 mins',
     features: ['Professional tools', 'Preparation included', 'Clean up']
   },
@@ -230,7 +194,6 @@ export const services = [
     title: 'Touch-Up Repairs',
     description: 'Filling cracks and painting patches (up to 2 hours).',
     price: 150.00,
-    memberPrice: 127.50,
     duration: '120 mins',
     features: ['Colour matching', 'Filler included', 'Seamless finish']
   },
@@ -240,7 +203,6 @@ export const services = [
     title: 'Paint Front Door',
     description: 'Sand, prime, and gloss exterior door.',
     price: 220.00,
-    memberPrice: 187.00,
     duration: '180 mins',
     features: ['Weatherproof paint', 'Hardware removal', 'Drying time management']
   },
@@ -250,7 +212,6 @@ export const services = [
     title: 'Wallpaper Feature Wall',
     description: 'Hanging paper on one standard wall.',
     price: 280.00,
-    memberPrice: 238.00,
     duration: '180 mins',
     features: ['Pattern matching', 'Paste included', 'Smooth finish']
   },
@@ -262,7 +223,6 @@ export const services = [
     title: 'Gutter Clean (Terrace)',
     description: 'Clean gutters front and back. Ladder access only.',
     price: 160.00,
-    memberPrice: 136.00,
     duration: '90 mins',
     features: ['Debris removal', 'Downpipe check', 'Flow test']
   },
@@ -272,7 +232,6 @@ export const services = [
     title: 'Roof Inspection (Drone)',
     description: 'High resolution camera inspection with report.',
     price: 200.00,
-    memberPrice: 170.00,
     duration: '60 mins',
     features: ['4K Images', 'Condition Report', 'No scaffolding needed']
   },
@@ -282,7 +241,6 @@ export const services = [
     title: 'Replace Roof Tile',
     description: 'Replace up to 5 accessible tiles.',
     price: 150.00,
-    memberPrice: 127.50,
     duration: '60 mins',
     features: ['Tiles matched', 'Watertight check', 'Debris removal']
   },
@@ -294,7 +252,6 @@ export const services = [
     title: 'High Pressure Jetting',
     description: 'Clear external blockage/manhole.',
     price: 180.00,
-    memberPrice: 153.00,
     duration: '60 mins',
     features: ['Powerful equipment', 'Full clearance', 'Flow test']
   },
@@ -304,7 +261,6 @@ export const services = [
     title: 'CCTV Drain Survey',
     description: 'Camera inspection with report (Look for rats/roots).',
     price: 250.00,
-    memberPrice: 212.50,
     duration: '90 mins',
     features: ['Video footage', 'Written report', 'Recommendations']
   },
@@ -316,17 +272,15 @@ export const services = [
     title: 'Gain Entry (Standard)',
     description: 'Non-destructive entry (if possible).',
     price: 140.00,
-    memberPrice: 119.00,
     duration: '45 mins',
     features: ['ID verification', 'No damage priority', 'Fast access']
   },
   {
     id: '30',
     category: 'Locksmith & Security',
-    title: 'Change Rim Cylinder',
+    title: 'Change Rim Cylinder (Yale)',
     description: 'Replace standard front door barrel.',
     price: 110.00,
-    memberPrice: 93.50,
     duration: '30 mins',
     features: ['New keys (x2)', 'Security check', '1 year warranty']
   },
@@ -336,7 +290,6 @@ export const services = [
     title: 'Board Up Window',
     description: 'Emergency security boarding for broken glass.',
     price: 180.00,
-    memberPrice: 153.00,
     duration: '60 mins',
     features: ['Secure fixing', 'Weatherproof', 'Temporary solution']
   },
@@ -348,17 +301,15 @@ export const services = [
     title: 'Replace Single Pane',
     description: 'Standard small window glass replacement.',
     price: 160.00,
-    memberPrice: 136.00,
     duration: '60 mins',
     features: ['Glass supplied', 'Putty/Beading', 'Disposal of broken glass']
   },
   {
     id: '33',
     category: 'Glazing',
-    title: 'Reseal Windows',
+    title: 'Reseal Windows (Silicone)',
     description: 'Remove old silicone and reseal (up to 3 windows).',
     price: 120.00,
-    memberPrice: 102.00,
     duration: '60 mins',
     features: ['Mould resistant', 'Watertight seal', 'Clean lines']
   },
@@ -370,7 +321,6 @@ export const services = [
     title: 'AC Service (Single Unit)',
     description: 'Clean filters, check gas levels, antibacterial spray.',
     price: 150.00,
-    memberPrice: 127.50,
     duration: '60 mins',
     features: ['Efficiency check', 'Bacteria clean', 'Leak test']
   },
@@ -380,7 +330,6 @@ export const services = [
     title: 'AC Regas',
     description: 'Top up refrigerant gas.',
     price: 180.00,
-    memberPrice: 153.00,
     duration: '60 mins',
     features: ['Gas included', 'Pressure test', 'Performance check']
   },
@@ -392,7 +341,6 @@ export const services = [
     title: 'Full Property Renovation Consultation',
     description: 'Site visit with Senior Architect to discuss layout & budget.',
     price: 0.00,
-    memberPrice: 0.00,
     duration: '60 mins',
     features: ['Senior Architect', 'Budget Planning', 'Layout Advice']
   },
@@ -402,7 +350,6 @@ export const services = [
     title: 'Kitchen Design Visit',
     description: 'Measure up and material consultation.',
     price: 0.00,
-    memberPrice: 0.00,
     duration: '60 mins',
     features: ['Measurements', 'Material Samples', 'Design Ideas']
   },
@@ -412,7 +359,6 @@ export const services = [
     title: 'Full House Repainting Quote',
     description: 'Detailed quote for interior/exterior painting.',
     price: 0.00,
-    memberPrice: 0.00,
     duration: '45 mins',
     features: ['Detailed Quote', 'Colour Advice', 'Schedule Planning']
   },
@@ -422,7 +368,6 @@ export const services = [
     title: 'The Pre-Sale Refresh Package',
     description: '2-Day blitz: Fix handles, touch-up paint, grout, deep clean.',
     price: 2500.00,
-    memberPrice: 2125.00,
     duration: '960 mins',
     features: ['2-Day Service', 'Multi-trade Team', 'Deep Clean Included']
   },
@@ -434,7 +379,6 @@ export const services = [
     title: 'Patio Jet Wash (Spring Prep)',
     description: 'High pressure clean of patio and garden furniture setup.',
     price: 250.00,
-    memberPrice: 212.50,
     duration: '120 mins',
     features: ['High Pressure Clean', 'Furniture Setup', 'Algae Treatment']
   },
@@ -444,7 +388,6 @@ export const services = [
     title: 'Holiday Home Check',
     description: 'We visit while you are away: Check boiler, post, plants.',
     price: 45.00,
-    memberPrice: 38.25,
     duration: '30 mins',
     features: ['Boiler Check', 'Post Collection', 'Plant Watering']
   },
@@ -454,7 +397,6 @@ export const services = [
     title: 'Christmas Tree Disposal',
     description: 'Collection and recycling in January.',
     price: 40.00,
-    memberPrice: 34.00,
     duration: '30 mins',
     features: ['Collection', 'Recycling', 'Clean Up']
   },
@@ -466,7 +408,6 @@ export const services = [
     title: 'Rental Turnaround Package',
     description: 'Safety checks, lock change, smoke alarms, 1 room paint.',
     price: 1200.00,
-    memberPrice: 1020.00,
     duration: '480 mins',
     features: ['Safety Checks', 'Lock Change', 'Smoke Alarms', '1 Room Paint']
   }

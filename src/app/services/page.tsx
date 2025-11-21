@@ -81,16 +81,9 @@ export default function ServicesPage({
                   </div>
                   
                   <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-muted">
-                    <div className="flex justify-between items-center mb-2">
-                      <span className="text-sm font-medium text-muted-foreground">Standard Price</span>
-                      <span className="text-lg font-bold text-muted-foreground line-through decoration-destructive/50">£{service.price}</span>
-                    </div>
                     <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-1.5">
-                        <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                        <span className="text-sm font-bold text-primary">Member Price</span>
-                      </div>
-                      <span className="text-2xl font-bold text-primary">£{service.memberPrice}</span>
+                      <span className="text-sm font-medium text-muted-foreground">Fixed Price</span>
+                      <span className="text-2xl font-bold text-primary">£{service.price}</span>
                     </div>
                   </div>
 
