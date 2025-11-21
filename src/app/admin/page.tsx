@@ -6,10 +6,11 @@ import { Button } from "@/components/ui/button"
 import { format } from "date-fns"
 import { Loader2, Check, X, MapPin } from "lucide-react"
 import Link from "next/link"
+import { Booking } from "@/types"
 
 export default function AdminDashboard() {
   const supabase = createClientComponentClient()
-  const [bookings, setBookings] = useState<any[]>([])
+  const [bookings, setBookings] = useState<Booking[]>([])
   const [loading, setLoading] = useState(true)
 
   const fetchBookings = async () => {
@@ -18,8 +19,8 @@ export default function AdminDashboard() {
       .from('bookings')
       .select(`
         *,
-        users ( full_name, email, address, postcode, phone ),
-        services ( title, price )
+        user:users ( full_name, email, address, postcode, phone ),
+        service:services ( title, price )
       `)
       .order('created_at', { ascending: false })
 
@@ -78,16 +79,16 @@ export default function AdminDashboard() {
                   <div className="text-sm text-gray-500">{booking.scheduled_slot}</div>
                 </td>
                 <td className="p-4">
-                  <div className="font-medium">{booking.users?.full_name || 'Unknown'}</div>
-                  <div className="text-sm text-gray-500">{booking.users?.phone}</div>
+                  <div className="font-medium">{booking.user?.full_name || 'Unknown'}</div>
+                  <div className="text-sm text-gray-500">{booking.user?.phone}</div>
                   <div className="text-sm text-gray-500 flex items-center gap-1">
                     <MapPin size={12} />
-                    {booking.users?.postcode}
+                    {booking.user?.postcode}
                   </div>
                 </td>
                 <td className="p-4">
-                  <div className="font-medium">{booking.services?.title}</div>
-                  <div className="text-sm text-gray-500">£{booking.services?.price}</div>
+                  <div className="font-medium">{booking.service?.title}</div>
+                  <div className="text-sm text-gray-500">£{booking.service?.price}</div>
                   {booking.photo_url && (
                     <a 
                       href={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/booking-photos/${booking.photo_url}`}

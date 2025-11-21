@@ -7,9 +7,10 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Calendar, Clock, MapPin } from "lucide-react"
 import { format } from "date-fns"
+import { Booking } from "@/types"
 
 export default function BookingsPage() {
-  const [bookings, setBookings] = useState<any[]>([])
+  const [bookings, setBookings] = useState<Booking[]>([])
   const [loading, setLoading] = useState(true)
   const supabase = createClientComponentClient()
 

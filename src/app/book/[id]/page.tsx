@@ -14,7 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as z from "zod"
 import { toast } from "sonner"
 import { cn } from "@/lib/utils"
-import { services } from "@/lib/data"
+import { User, Service } from "@/types"
 
 const bookingSchema = z.object({
   date: z.date({
@@ -33,9 +33,30 @@ export default function BookingPage({ params }: { params: { id: string } }) {
   const supabase = createClientComponentClient()
   const [file, setFile] = useState<File | null>(null)
   const [loading, setLoading] = useState(false)
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
+  const [service, setService] = useState<Service | null>(null)
+  const [fetchingService, setFetchingService] = useState(true)
 
-  const service = services.find(s => s.id === params.id)
+  useEffect(() => {
+    const fetchService = async () => {
+      const { data, error } = await supabase
+        .from('services')
+        .select('*, category:categories(name)')
+        .eq('id', params.id)
+        .single()
+      
+      if (data) {
+        setService({
+            ...data,
+            category: data.category?.name || 'Uncategorized',
+            duration: `${data.duration_minutes} mins`,
+            features: data.features || []
+        } as Service)
+      }
+      setFetchingService(false)
+    }
+    fetchService()
+  }, [params.id, supabase])
 
   const form = useForm<BookingFormValues>({
     resolver: zodResolver(bookingSchema),
@@ -121,6 +142,7 @@ export default function BookingPage({ params }: { params: { id: string } }) {
     }
   }
 
+  if (fetchingService) return <div className="flex justify-center p-12"><Loader2 className="animate-spin" /></div>
   if (!service) return <div className="p-12 text-center">Service not found</div>
 
   return (
@@ -146,8 +168,8 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                     <Calendar
                       mode="single"
                       selected={form.watch("date")}
-                      onSelect={(date) => form.setValue("date", date as Date)}
-                      disabled={(date) => date < new Date()}
+                      onSelect={(date: Date | undefined) => date && form.setValue("date", date)}
+                      disabled={(date: Date) => date < new Date()}
                       className="rounded-md border shadow-sm"
                     />
                   </div>

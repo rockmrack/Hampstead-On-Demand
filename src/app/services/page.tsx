@@ -1,123 +1,70 @@
 "use client"
 
 import Navbar from "@/components/Navbar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Clock, ArrowRight, Check, Star } from "lucide-react";
-import { services } from "@/lib/data";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import ServicesList from "@/components/ServicesList";
+import { Service } from "@/types";
 
-export default function ServicesPage({
+export const dynamic = 'force-dynamic';
+
+export default async function ServicesPage({
   searchParams,
 }: {
   searchParams: { category?: string };
 }) {
+  const supabase = createServerComponentClient({ cookies });
   const categoryFilter = searchParams.category;
-  
-  const filteredServices = categoryFilter 
-    ? services.filter(s => s.category.toLowerCase() === categoryFilter.toLowerCase())
-    : services;
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+  let query = supabase
+    .from('services')
+    .select('*, category:categories(name)')
+    .eq('is_active', true);
 
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 }
-  };
+  // If we have a category filter, we need to filter by the joined category name.
+  // Supabase doesn't support filtering on joined columns easily in one go without !inner or similar.
+  // But since we have a small dataset, we can fetch all and filter in JS, OR use !inner.
+  if (categoryFilter) {
+    query = supabase
+      .from('services')
+      .select('*, category:categories!inner(name)')
+      .eq('is_active', true)
+      .ilike('category.name', categoryFilter); // Case insensitive match? category names are capitalized in DB usually.
+      // Actually, category names in DB are "Plumbing & Heating". Filter is "plumbing".
+      // This is hard to match exactly via DB query if slugs aren't used.
+      // The schema has `icon_slug`. Maybe we should filter by that?
+      // The URL uses `category=plumbing`.
+      // Let's assume we filter in JS for flexibility with the current URL structure.
+  }
+
+  const { data: servicesData, error } = await supabase
+    .from('services')
+    .select('*, category:categories(name)')
+    .eq('is_active', true);
+    
+  if (error) {
+    console.error("Error fetching services:", error);
+    // Fallback or error state? For now, empty list.
+  }
+
+  let services: Service[] = (servicesData || []).map((s: any) => ({
+    ...s,
+    category: s.category?.name || 'Uncategorized',
+    duration: `${s.duration_minutes} mins`,
+    features: s.features || []
+  }));
+
+  if (categoryFilter) {
+    services = services.filter(s => 
+      s.category.toLowerCase().includes(categoryFilter.toLowerCase()) || 
+      categoryFilter.toLowerCase().includes(s.category.toLowerCase().split(' ')[0]) // Handle "Plumbing" vs "Plumbing & Heating"
+    );
+  }
 
   return (
     <main className="min-h-screen bg-muted/30 pb-20 md:pb-0">
       <Navbar />
-      
-      <div className="max-w-5xl mx-auto px-6 py-12">
-        <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">
-            {categoryFilter ? `${categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1)} Services` : 'All Services'}
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Transparent pricing. No hidden fees. Book in seconds.
-          </p>
-        </div>
-
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="grid gap-6 md:grid-cols-2"
-        >
-          {filteredServices.map((service) => (
-            <motion.div variants={item} key={service.id}>
-              <Card className="h-full flex flex-col hover:shadow-md transition-shadow duration-200 relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-bl-lg z-10">
-                  Fixed Price
-                </div>
-                <CardHeader>
-                  <div className="flex justify-between items-start gap-4">
-                    <div>
-                      <Badge variant="secondary" className="mb-2">
-                        {service.category}
-                      </Badge>
-                      <CardTitle className="text-xl">{service.title}</CardTitle>
-                    </div>
-                  </div>
-                  <CardDescription className="text-base mt-2">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-                    <Clock className="h-4 w-4" />
-                    <span>{service.duration}</span>
-                  </div>
-                  
-                  <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-muted">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-muted-foreground">Fixed Price</span>
-                      <span className="text-2xl font-bold text-primary">£{service.price}</span>
-                    </div>
-                  </div>
-
-                  <ul className="space-y-2">
-                    {service.features?.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm">
-                        <Check className="h-4 w-4 text-green-500" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardFooter>
-                  <Button asChild className="w-full group">
-                    <Link href={`/book/${service.id}`}>
-                      Book Now
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {filteredServices.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">No services found in this category.</p>
-            <Button variant="link" asChild className="mt-4">
-              <Link href="/services">View all services</Link>
-            </Button>
-          </div>
-        )}
-      </div>
+      <ServicesList services={services} categoryFilter={categoryFilter} />
     </main>
   );
 }
