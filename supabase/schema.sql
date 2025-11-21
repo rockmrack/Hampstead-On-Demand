@@ -112,6 +112,9 @@ declare
   locksmith_id uuid;
   glazing_id uuid;
   ac_id uuid;
+  renovations_id uuid;
+  seasonal_id uuid;
+  landlord_id uuid;
 begin
   -- Insert Categories
   insert into public.categories (name, icon_slug) values ('Plumbing & Heating', 'droplet') returning id into plumbing_id;
@@ -124,6 +127,9 @@ begin
   insert into public.categories (name, icon_slug) values ('Locksmith & Security', 'lock') returning id into locksmith_id;
   insert into public.categories (name, icon_slug) values ('Glazing', 'maximize') returning id into glazing_id;
   insert into public.categories (name, icon_slug) values ('Air Conditioning', 'wind') returning id into ac_id;
+  insert into public.categories (name, icon_slug) values ('Major Renovations', 'home') returning id into renovations_id;
+  insert into public.categories (name, icon_slug) values ('Seasonal & Lifestyle', 'sun') returning id into seasonal_id;
+  insert into public.categories (name, icon_slug) values ('Landlord Services', 'key') returning id into landlord_id;
 
   -- Insert Services for Plumbing & Heating
   insert into public.services (category_id, title, description, price, duration_minutes) values
@@ -131,7 +137,8 @@ begin
   (plumbing_id, 'Tap Repair / Replace', 'We supply standard tap or fit yours. Includes removal of old unit.', 130.00, 60),
   (plumbing_id, 'Toilet Unblock', 'Fixed price unblocking. Includes machinery if needed.', 160.00, 60),
   (plumbing_id, 'Radiator Bleed (All)', 'Improve heating efficiency. Bleed all radiators in property.', 110.00, 60),
-  (plumbing_id, 'Leak Investigation', 'Diagnostic visit to identify source of leak.', 120.00, 60);
+  (plumbing_id, 'Leak Investigation', 'Diagnostic visit to identify source of leak.', 120.00, 60),
+  (plumbing_id, 'Gas Safety Cert (CP12)', 'Landlord Gas Safety Certificate for one appliance.', 110.00, 45);
 
   -- Insert Services for Electrical
   insert into public.services (category_id, title, description, price, duration_minutes) values
@@ -153,16 +160,14 @@ begin
   (carpentry_id, 'Sash Window Cord Repair', 'Replace snapped cord (Lower sash). Per window.', 180.00, 120),
   (carpentry_id, 'Fit Door Lock/Latch', 'Install new handle/latch mechanism.', 110.00, 60),
   (carpentry_id, 'Build Shelves (Alcove)', 'Labour only. Floating or batten shelves in 1 alcove.', 250.00, 180),
-  (carpentry_id, 'Boxing In Pipework', 'Hide unsightly pipes in bathroom/kitchen.', 140.00, 90),
-  (carpentry_id, 'Lay Laminate/Wood Floor (Small)', 'Labour for 1 small room (up to 10sqm).', 350.00, 240);
+  (carpentry_id, 'Boxing In Pipework', 'Hide unsightly pipes in bathroom/kitchen.', 140.00, 90);
 
   -- Insert Services for Painting & Decorating
   insert into public.services (category_id, title, description, price, duration_minutes) values
   (painting_id, 'Painter for a Day (8 Hrs)', 'One professional decorator. You supply paint.', 550.00, 480),
-  (painting_id, 'Paint Single Room (Small)', 'Walls & Ceiling (up to 3x3m). 2 Coats.', 350.00, 240),
   (painting_id, 'Touch-Up Repairs', 'Filling cracks and painting patches (up to 2 hours).', 150.00, 120),
-  (painting_id, 'Wallpaper Feature Wall', 'Hanging paper on one standard wall.', 280.00, 180),
-  (painting_id, 'Paint Front Door', 'Sand, prime, and gloss exterior door.', 220.00, 180);
+  (painting_id, 'Paint Front Door', 'Sand, prime, and gloss exterior door.', 220.00, 180),
+  (painting_id, 'Wallpaper Feature Wall', 'Hanging paper on one standard wall.', 280.00, 180);
 
   -- Insert Services for Roofing & Gutters
   insert into public.services (category_id, title, description, price, duration_minutes) values
@@ -173,26 +178,40 @@ begin
   -- Insert Services for Drainage
   insert into public.services (category_id, title, description, price, duration_minutes) values
   (drainage_id, 'High Pressure Jetting', 'Clear external blockage/manhole.', 180.00, 60),
-  (drainage_id, 'CCTV Drain Survey', 'Camera inspection with report (Look for rats/roots).', 250.00, 90),
-  (drainage_id, 'Sink/Bath Unblock', 'Manual unblocking of internal waste pipes.', 120.00, 60);
+  (drainage_id, 'CCTV Drain Survey', 'Camera inspection with report (Look for rats/roots).', 250.00, 90);
 
   -- Insert Services for Locksmith & Security
   insert into public.services (category_id, title, description, price, duration_minutes) values
   (locksmith_id, 'Gain Entry (Standard)', 'Non-destructive entry (if possible).', 140.00, 45),
   (locksmith_id, 'Change Rim Cylinder (Yale)', 'Replace standard front door barrel.', 110.00, 30),
-  (locksmith_id, 'Change Mortice Lock (Chubb)', 'Replace heavy duty deadlock.', 160.00, 60),
   (locksmith_id, 'Board Up Window', 'Emergency security boarding for broken glass.', 180.00, 60);
 
   -- Insert Services for Glazing
   insert into public.services (category_id, title, description, price, duration_minutes) values
   (glazing_id, 'Replace Single Pane', 'Standard small window glass replacement.', 160.00, 60),
-  (glazing_id, 'Reseal Windows (Silicone)', 'Remove old silicone and reseal (up to 3 windows).', 120.00, 60),
-  (glazing_id, 'Window Mechanism Repair', 'Fix jammed handle or hinge on uPVC window.', 140.00, 60);
+  (glazing_id, 'Reseal Windows (Silicone)', 'Remove old silicone and reseal (up to 3 windows).', 120.00, 60);
 
   -- Insert Services for Air Conditioning
   insert into public.services (category_id, title, description, price, duration_minutes) values
   (ac_id, 'AC Service (Single Unit)', 'Clean filters, check gas levels, antibacterial spray.', 150.00, 60),
   (ac_id, 'AC Regas', 'Top up refrigerant gas.', 180.00, 60);
+
+  -- Insert Services for Major Renovations
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (renovations_id, 'Full Property Renovation Consultation', 'Site visit with Senior Architect to discuss layout & budget.', 0.00, 60),
+  (renovations_id, 'Kitchen Design Visit', 'Measure up and material consultation.', 0.00, 60),
+  (renovations_id, 'Full House Repainting Quote', 'Detailed quote for interior/exterior painting.', 0.00, 45),
+  (renovations_id, 'The Pre-Sale Refresh Package', '2-Day blitz: Fix handles, touch-up paint, grout, deep clean.', 2500.00, 960);
+
+  -- Insert Services for Seasonal & Lifestyle
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (seasonal_id, 'Patio Jet Wash (Spring Prep)', 'High pressure clean of patio and garden furniture setup.', 250.00, 120),
+  (seasonal_id, 'Holiday Home Check', 'We visit while you are away: Check boiler, post, plants.', 45.00, 30),
+  (seasonal_id, 'Christmas Tree Disposal', 'Collection and recycling in January.', 40.00, 30);
+
+  -- Insert Services for Landlord Services
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (landlord_id, 'Rental Turnaround Package', 'Safety checks, lock change, smoke alarms, 1 room paint.', 1200.00, 480);
 
   -- Storage Policies (Note: You must create the 'booking-photos' bucket in the Supabase Dashboard first)
   -- insert into storage.buckets (id, name) values ('booking-photos', 'booking-photos');

@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Search, Wrench, Zap, Droplet, Hammer, Home as HomeIcon, CheckCircle2, Clock, Shield, Brush, CloudRain, Waves, Lock, Maximize, Wind, Axe } from "lucide-react";
+import { Search, Wrench, Zap, Droplet, Hammer, Home as HomeIcon, CheckCircle2, Clock, Shield, Brush, CloudRain, Waves, Lock, Maximize, Wind, Axe, Sun, Key } from "lucide-react";
 
 export default function Home() {
   const container = {
@@ -88,7 +88,10 @@ export default function Home() {
             { name: 'Drainage', icon: Waves, color: 'text-cyan-600', bg: 'bg-cyan-50' },
             { name: 'Locksmith', icon: Lock, color: 'text-red-500', bg: 'bg-red-50' },
             { name: 'Glazing', icon: Maximize, color: 'text-sky-400', bg: 'bg-sky-50' },
-            { name: 'AC', icon: Wind, color: 'text-teal-500', bg: 'bg-teal-50' }
+            { name: 'AC', icon: Wind, color: 'text-teal-500', bg: 'bg-teal-50' },
+            { name: 'Renovations', icon: HomeIcon, color: 'text-purple-500', bg: 'bg-purple-50' },
+            { name: 'Seasonal', icon: Sun, color: 'text-yellow-400', bg: 'bg-yellow-50' },
+            { name: 'Landlord', icon: Key, color: 'text-indigo-500', bg: 'bg-indigo-50' }
           ].map((category) => (
             <motion.div variants={item} key={category.name}>
               <Link href={`/services?category=${category.name.toLowerCase()}`}>
