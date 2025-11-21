@@ -103,47 +103,96 @@ create policy "Admins can update all bookings" on public.bookings
 do $$
 declare
   plumbing_id uuid;
-  heating_id uuid;
-  handyman_id uuid;
   electrical_id uuid;
+  handyman_id uuid;
+  carpentry_id uuid;
+  painting_id uuid;
   roofing_id uuid;
+  drainage_id uuid;
+  locksmith_id uuid;
+  glazing_id uuid;
+  ac_id uuid;
 begin
   -- Insert Categories
-  insert into public.categories (name, icon_slug) values ('Plumbing', 'droplet') returning id into plumbing_id;
-  insert into public.categories (name, icon_slug) values ('Heating', 'flame') returning id into heating_id;
-  insert into public.categories (name, icon_slug) values ('Handyman', 'hammer') returning id into handyman_id;
+  insert into public.categories (name, icon_slug) values ('Plumbing & Heating', 'droplet') returning id into plumbing_id;
   insert into public.categories (name, icon_slug) values ('Electrical', 'zap') returning id into electrical_id;
-  insert into public.categories (name, icon_slug) values ('Roofing', 'home') returning id into roofing_id;
+  insert into public.categories (name, icon_slug) values ('Handyman', 'hammer') returning id into handyman_id;
+  insert into public.categories (name, icon_slug) values ('Carpentry', 'axe') returning id into carpentry_id;
+  insert into public.categories (name, icon_slug) values ('Painting & Decorating', 'brush') returning id into painting_id;
+  insert into public.categories (name, icon_slug) values ('Roofing & Gutters', 'cloud-rain') returning id into roofing_id;
+  insert into public.categories (name, icon_slug) values ('Drainage', 'waves') returning id into drainage_id;
+  insert into public.categories (name, icon_slug) values ('Locksmith & Security', 'lock') returning id into locksmith_id;
+  insert into public.categories (name, icon_slug) values ('Glazing', 'maximize') returning id into glazing_id;
+  insert into public.categories (name, icon_slug) values ('Air Conditioning', 'wind') returning id into ac_id;
 
-  -- Insert Services for Plumbing
+  -- Insert Services for Plumbing & Heating
   insert into public.services (category_id, title, description, price, duration_minutes) values
-  (plumbing_id, 'Replace Kitchen Tap', 'We supply standard tap or fit yours', 120.00, 60),
-  (plumbing_id, 'Unblock Sink', 'Clear blockage in kitchen or bathroom sink', 85.00, 45),
-  (plumbing_id, 'Fix Leaking Pipe', 'Repair visible leaking pipework', 95.00, 60);
-
-  -- Insert Services for Heating
-  insert into public.services (category_id, title, description, price, duration_minutes) values
-  (heating_id, 'Boiler Service', 'Annual safety check and service', 90.00, 60),
-  (heating_id, 'Radiator Bleeding', 'Bleed all radiators in property', 75.00, 45),
-  (heating_id, 'Thermostat Installation', 'Install smart or standard thermostat', 110.00, 90);
-
-  -- Insert Services for Handyman
-  insert into public.services (category_id, title, description, price, duration_minutes) values
-  (handyman_id, 'General Handyman (1 Hour)', 'Small repairs, hanging pictures, etc.', 85.00, 60),
-  (handyman_id, 'Furniture Assembly', 'Assemble flat-pack furniture (per item)', 60.00, 90),
-  (handyman_id, 'Door Handle Repair', 'Fix or replace loose door handles', 70.00, 45);
+  (plumbing_id, 'Boiler Service (Annual)', 'Full safety check & certificate (CP12). Essential for warranty validity.', 120.00, 60),
+  (plumbing_id, 'Tap Repair / Replace', 'We supply standard tap or fit yours. Includes removal of old unit.', 130.00, 60),
+  (plumbing_id, 'Toilet Unblock', 'Fixed price unblocking. Includes machinery if needed.', 160.00, 60),
+  (plumbing_id, 'Radiator Bleed (All)', 'Improve heating efficiency. Bleed all radiators in property.', 110.00, 60),
+  (plumbing_id, 'Leak Investigation', 'Diagnostic visit to identify source of leak.', 120.00, 60);
 
   -- Insert Services for Electrical
   insert into public.services (category_id, title, description, price, duration_minutes) values
-  (electrical_id, 'Replace Light Fitting', 'Swap existing fitting for new one', 80.00, 45),
-  (electrical_id, 'Socket Replacement', 'Replace single or double socket faceplate', 75.00, 30),
-  (electrical_id, 'Fuse Box Inspection', 'Visual inspection and basic testing', 150.00, 120);
+  (electrical_id, 'Replace Socket / Switch', 'Per unit. White plastic standard faceplate included.', 110.00, 45),
+  (electrical_id, 'Hang Chandelier', 'Installation up to 3m ceiling height. Heavy duty fixings.', 180.00, 90),
+  (electrical_id, 'EICR (1-2 Bed Flat)', 'Electrical safety check for landlords (1-2 Bed Flat).', 200.00, 120),
+  (electrical_id, 'Fault Finding', 'Diagnostic visit for tripping fuses or power loss.', 120.00, 60);
 
-  -- Insert Services for Roofing
+  -- Insert Services for Handyman
   insert into public.services (category_id, title, description, price, duration_minutes) values
-  (roofing_id, 'Gutter Cleaning (Terrace)', 'Clean gutters front and back', 150.00, 90),
-  (roofing_id, 'Replace Broken Tile', 'Replace up to 5 accessible tiles', 180.00, 120),
-  (roofing_id, 'Chimney Pot Capping', 'Supply and fit chimney cap', 200.00, 120);
+  (handyman_id, 'General Handyman (1 Hour)', 'Small repairs, hanging pictures, etc.', 95.00, 60),
+  (handyman_id, 'TV Wall Mounting', 'Up to 55 inch TV. Bracket not included (can be supplied).', 140.00, 90),
+  (handyman_id, 'Hang Mirror / Art', 'Up to 3 items. Heavy duty fixings included for safety.', 85.00, 45),
+  (handyman_id, 'Flatpack Assembly (Large)', 'Wardrobe or Bed frame assembly.', 180.00, 120);
+
+  -- Insert Services for Carpentry
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (carpentry_id, 'Hang Internal Door', 'Trimming and hanging 1 standard door (door not included).', 160.00, 90),
+  (carpentry_id, 'Sash Window Cord Repair', 'Replace snapped cord (Lower sash). Per window.', 180.00, 120),
+  (carpentry_id, 'Fit Door Lock/Latch', 'Install new handle/latch mechanism.', 110.00, 60),
+  (carpentry_id, 'Build Shelves (Alcove)', 'Labour only. Floating or batten shelves in 1 alcove.', 250.00, 180),
+  (carpentry_id, 'Boxing In Pipework', 'Hide unsightly pipes in bathroom/kitchen.', 140.00, 90),
+  (carpentry_id, 'Lay Laminate/Wood Floor (Small)', 'Labour for 1 small room (up to 10sqm).', 350.00, 240);
+
+  -- Insert Services for Painting & Decorating
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (painting_id, 'Painter for a Day (8 Hrs)', 'One professional decorator. You supply paint.', 550.00, 480),
+  (painting_id, 'Paint Single Room (Small)', 'Walls & Ceiling (up to 3x3m). 2 Coats.', 350.00, 240),
+  (painting_id, 'Touch-Up Repairs', 'Filling cracks and painting patches (up to 2 hours).', 150.00, 120),
+  (painting_id, 'Wallpaper Feature Wall', 'Hanging paper on one standard wall.', 280.00, 180),
+  (painting_id, 'Paint Front Door', 'Sand, prime, and gloss exterior door.', 220.00, 180);
+
+  -- Insert Services for Roofing & Gutters
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (roofing_id, 'Gutter Clean (Terrace)', 'Clean gutters front and back. Ladder access only.', 160.00, 90),
+  (roofing_id, 'Roof Inspection (Drone)', 'High resolution camera inspection with report.', 200.00, 60),
+  (roofing_id, 'Replace Roof Tile', 'Replace up to 5 accessible tiles.', 150.00, 60);
+
+  -- Insert Services for Drainage
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (drainage_id, 'High Pressure Jetting', 'Clear external blockage/manhole.', 180.00, 60),
+  (drainage_id, 'CCTV Drain Survey', 'Camera inspection with report (Look for rats/roots).', 250.00, 90),
+  (drainage_id, 'Sink/Bath Unblock', 'Manual unblocking of internal waste pipes.', 120.00, 60);
+
+  -- Insert Services for Locksmith & Security
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (locksmith_id, 'Gain Entry (Standard)', 'Non-destructive entry (if possible).', 140.00, 45),
+  (locksmith_id, 'Change Rim Cylinder (Yale)', 'Replace standard front door barrel.', 110.00, 30),
+  (locksmith_id, 'Change Mortice Lock (Chubb)', 'Replace heavy duty deadlock.', 160.00, 60),
+  (locksmith_id, 'Board Up Window', 'Emergency security boarding for broken glass.', 180.00, 60);
+
+  -- Insert Services for Glazing
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (glazing_id, 'Replace Single Pane', 'Standard small window glass replacement.', 160.00, 60),
+  (glazing_id, 'Reseal Windows (Silicone)', 'Remove old silicone and reseal (up to 3 windows).', 120.00, 60),
+  (glazing_id, 'Window Mechanism Repair', 'Fix jammed handle or hinge on uPVC window.', 140.00, 60);
+
+  -- Insert Services for Air Conditioning
+  insert into public.services (category_id, title, description, price, duration_minutes) values
+  (ac_id, 'AC Service (Single Unit)', 'Clean filters, check gas levels, antibacterial spray.', 150.00, 60),
+  (ac_id, 'AC Regas', 'Top up refrigerant gas.', 180.00, 60);
 
   -- Storage Policies (Note: You must create the 'booking-photos' bucket in the Supabase Dashboard first)
   -- insert into storage.buckets (id, name) values ('booking-photos', 'booking-photos');
