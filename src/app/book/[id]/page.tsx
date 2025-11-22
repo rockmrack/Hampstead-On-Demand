@@ -24,6 +24,7 @@ const bookingSchema = z.object({
     required_error: "Please select a time slot",
   }),
   notes: z.string().min(10, "Please provide a bit more detail about the issue"),
+  frequency: z.enum(["one_off", "weekly", "bi_weekly"]).default("one_off"),
 })
 
 type BookingFormValues = z.infer<typeof bookingSchema>
@@ -63,6 +64,7 @@ export default function BookingPage({ params }: { params: { id: string } }) {
     defaultValues: {
       slot: "Morning",
       notes: "",
+      frequency: "one_off",
     },
   })
 
@@ -109,7 +111,8 @@ export default function BookingPage({ params }: { params: { id: string } }) {
           scheduled_slot: data.slot,
           customer_notes: data.notes,
           photo_url: photoUrl,
-          status: 'pending'
+          status: 'pending',
+          recurring_frequency: data.frequency
         })
 
       if (bookingError) {
@@ -124,7 +127,8 @@ export default function BookingPage({ params }: { params: { id: string } }) {
               date: data.date,
               slot: data.slot,
               notes: data.notes,
-              email: user?.email
+              email: user?.email,
+              frequency: data.frequency
             })
           })
           
@@ -145,6 +149,10 @@ export default function BookingPage({ params }: { params: { id: string } }) {
   if (fetchingService) return <div className="flex justify-center p-12"><Loader2 className="animate-spin" /></div>
   if (!service) return <div className="p-12 text-center">Service not found</div>
 
+  const isHousekeeping = service.category === 'Housekeeping';
+  const frequency = form.watch("frequency");
+  const finalPrice = frequency === 'weekly' ? service.price * 0.9 : service.price;
+
   return (
     <div className="min-h-screen bg-muted/30 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
@@ -153,6 +161,12 @@ export default function BookingPage({ params }: { params: { id: string } }) {
           <p className="mt-2 text-lg text-muted-foreground">
             You are booking <span className="font-semibold text-foreground">{service.title}</span>
           </p>
+          {isHousekeeping && (
+             <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full shadow-sm text-sm font-medium text-slate-700">
+               <span className="text-blue-600">🛡️</span>
+               Vetted, Insured & Employed by Hampstead Renovations
+             </div>
+          )}
         </div>
 
         <div className="grid gap-8 md:grid-cols-[1fr_300px]">
@@ -200,6 +214,39 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                 </div>
               </CardContent>
             </Card>
+
+            {isHousekeeping && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Frequency</CardTitle>
+                  <CardDescription>Save 10% with a weekly subscription.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div
+                      onClick={() => form.setValue("frequency", "one_off")}
+                      className={cn(
+                        "cursor-pointer rounded-lg border-2 p-4 hover:border-primary transition-all",
+                        frequency === "one_off" ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-muted bg-card"
+                      )}
+                    >
+                      <div className="font-semibold">One-off</div>
+                      <div className="text-sm text-muted-foreground">Standard Price</div>
+                    </div>
+                    <div
+                      onClick={() => form.setValue("frequency", "weekly")}
+                      className={cn(
+                        "cursor-pointer rounded-lg border-2 p-4 hover:border-primary transition-all",
+                        frequency === "weekly" ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-muted bg-card"
+                      )}
+                    >
+                      <div className="font-semibold">Weekly</div>
+                      <div className="text-sm text-green-600 font-medium">Save 10%</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
 
             <Card>
               <CardHeader>
@@ -266,8 +313,11 @@ export default function BookingPage({ params }: { params: { id: string } }) {
                 <div className="border-t pt-4 space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="font-medium">Total Price</span>
-                    <span className="font-bold text-xl">£{service.price}</span>
+                    <span className="font-bold text-xl">£{finalPrice.toFixed(2)}</span>
                   </div>
+                  {frequency === 'weekly' && (
+                    <div className="text-xs text-green-600 text-right">Includes 10% weekly discount</div>
+                  )}
                 </div>
                 
                 <Button 

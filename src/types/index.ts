@@ -27,9 +27,20 @@ export interface Booking {
   scheduled_slot: 'Morning' | 'Afternoon';
   customer_notes?: string;
   photo_url?: string;
+  recurring_frequency?: 'one_off' | 'weekly' | 'bi_weekly';
   created_at: string;
   service?: Service; // For joined queries
   user?: User; // For joined queries
+}
+
+export interface ServiceRequest {
+  id: string;
+  user_id: string;
+  title: string;
+  description: string;
+  status: 'pending' | 'in_progress' | 'completed';
+  source: 'client' | 'staff_report';
+  created_at: string;
 }
 
 export interface User {

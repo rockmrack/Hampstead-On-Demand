@@ -57,7 +57,12 @@ export default function AdminDashboard() {
     <div className="max-w-6xl mx-auto px-6 py-12">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold">Admin Dashboard</h1>
-        <Button onClick={fetchBookings} variant="outline">Refresh</Button>
+        <div className="flex gap-2">
+            <Button asChild variant="secondary">
+                <Link href="/admin/reports">Staff Reports</Link>
+            </Button>
+            <Button onClick={fetchBookings} variant="outline">Refresh</Button>
+        </div>
       </div>
 
       <div className="bg-white rounded-lg shadow overflow-hidden border">

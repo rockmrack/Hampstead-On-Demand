@@ -412,5 +412,84 @@ export const services: Service[] = [
     price: 1200.00,
     duration: '480 mins',
     features: ['Safety Checks', 'Lock Change', 'Smoke Alarms', '1 Room Paint']
+  },
+  {
+    id: '99999999-9999-9999-9999-999999999999',
+    category: 'Handyman',
+    title: 'Maintenance Investigation',
+    description: 'Investigate issue reported by housekeeping staff.',
+    price: 95.00,
+    duration: '60 mins',
+    features: ['Expert diagnosis', 'Report included']
+  },
+
+  // --- 14. HOUSEKEEPING (New Module) ---
+  // 1. THE DEEP CLEANS (Fixed Price Entry Points)
+  { 
+    id: '11111111-1111-1111-1111-111111111111',
+    category: "Housekeeping", 
+    title: "The Hampstead Deep Clean (Flat)", 
+    description: "Top-to-bottom spring clean. Behind furniture, inside cupboards, descaling bathrooms.",
+    price: 250.00, 
+    duration: '240 mins',
+    features: ['4 Hours x 2 Cleaners', 'Inside Cupboards', 'Descaling']
+  },
+  { 
+    id: '22222222-2222-2222-2222-222222222222',
+    category: "Housekeeping", 
+    title: "The Hampstead Deep Clean (House)", 
+    description: "Full property deep clean including skirting boards, windows (internal), and kitchen degreasing.",
+    price: 450.00, 
+    duration: '480 mins',
+    features: ['Full Day Team', 'Internal Windows', 'Kitchen Degreasing']
+  },
+  { 
+    id: '33333333-3333-3333-3333-333333333333',
+    category: "Housekeeping", 
+    title: "Post-Renovation Sparkle Clean", 
+    description: "Specialist dust removal after building work. Ready for furniture.",
+    price: 350.00, 
+    duration: '360 mins',
+    features: ['Dust Removal', 'Ready for Furniture', 'Specialist Equipment']
+  },
+
+  // 2. SPECIALIST SERVICES
+  { 
+    id: '44444444-4444-4444-4444-444444444444',
+    category: "Housekeeping", 
+    title: "Carpet & Upholstery Cleaning", 
+    description: "Professional hot water extraction (Steam clean). Per room.",
+    price: 85.00, 
+    duration: '60 mins',
+    features: ['Hot Water Extraction', 'Stain Removal', 'Deodorising']
+  },
+  { 
+    id: '55555555-5555-5555-5555-555555555555',
+    category: "Housekeeping", 
+    title: "Oven Detailing (Double Oven)", 
+    description: "Strip down and chemical dip cleaning.",
+    price: 90.00, 
+    duration: '90 mins',
+    features: ['Chemical Dip', 'Strip Down', 'Bulb Replacement']
+  },
+
+  // 3. REGULAR HOUSEKEEPING (Blocks of Hours)
+  { 
+    id: '66666666-6666-6666-6666-666666666666',
+    category: "Housekeeping", 
+    title: "Housekeeping Session (3 Hours)", 
+    description: "Weekly standard clean. Hotel-style bed making, ironing, surface cleaning.",
+    price: 95.00, 
+    duration: '180 mins',
+    features: ['Hotel-style Bed Making', 'Ironing', 'Surface Cleaning']
+  },
+  { 
+    id: '77777777-7777-7777-7777-777777777777',
+    category: "Housekeeping", 
+    title: "Housekeeping Session (5 Hours)", 
+    description: "Extensive clean for larger homes. Includes laundry management.",
+    price: 150.00, 
+    duration: '300 mins',
+    features: ['Laundry Management', 'Deep Cleaning', 'Organising']
   }
 ];

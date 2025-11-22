@@ -29,12 +29,20 @@ export default function ServicesList({ services, categoryFilter }: ServicesListP
     show: { opacity: 1, y: 0 }
   };
 
+  const isHousekeeping = categoryFilter === 'Housekeeping';
+
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
+    <div className={`max-w-5xl mx-auto px-6 py-12 ${isHousekeeping ? 'bg-slate-50' : ''}`}>
       <div className="mb-12 text-center">
         <h1 className="text-4xl font-bold tracking-tight mb-4">
           {categoryFilter ? `${categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1)} Services` : 'All Services'}
         </h1>
+        {isHousekeeping && (
+          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full shadow-sm text-sm font-medium text-slate-700">
+            <span className="text-blue-600">🛡️</span>
+            Vetted, Insured & Employed by Hampstead Renovations
+          </div>
+        )}
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Transparent pricing. No hidden fees. Book in seconds.
         </p>
@@ -48,14 +56,14 @@ export default function ServicesList({ services, categoryFilter }: ServicesListP
       >
         {services.map((service) => (
           <motion.div variants={item} key={service.id}>
-            <Card className="h-full flex flex-col hover:shadow-md transition-shadow duration-200 relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-bl-lg z-10">
+            <Card className={`h-full flex flex-col hover:shadow-md transition-shadow duration-200 relative overflow-hidden ${service.category === 'Housekeeping' ? 'border-slate-200 bg-white' : ''}`}>
+              <div className={`absolute top-0 right-0 text-xs font-bold px-3 py-1 rounded-bl-lg z-10 ${service.category === 'Housekeeping' ? 'bg-slate-200 text-slate-800' : 'bg-primary text-primary-foreground'}`}>
                 Fixed Price
               </div>
               <CardHeader>
                 <div className="flex justify-between items-start gap-4">
                   <div>
-                    <Badge variant="secondary" className="mb-2">
+                    <Badge variant={service.category === 'Housekeeping' ? "outline" : "secondary"} className="mb-2">
                       {service.category}
                     </Badge>
                     <CardTitle className="text-xl">{service.title}</CardTitle>
