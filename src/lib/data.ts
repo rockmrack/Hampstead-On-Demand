@@ -491,5 +491,52 @@ export const services: Service[] = [
     price: 150.00, 
     duration: '300 mins',
     features: ['Laundry Management', 'Deep Cleaning', 'Organising']
+  },
+
+  // --- 15. GARDENS & OUTDOORS (New Module) ---
+  {
+    id: '88888888-8888-8888-8888-888888888888',
+    category: "Gardens & Outdoors",
+    title: "Lawn Mowing & Edging",
+    description: "Professional cut and edge for standard garden lawns.",
+    price: 60.00,
+    duration: '60 mins',
+    features: ['Mowing', 'Edging', 'Clippings Removal']
+  },
+  {
+    id: 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+    category: "Gardens & Outdoors",
+    title: "Hedge Trimming (Small)",
+    description: "Shaping and trimming of garden hedges (up to 2m height).",
+    price: 120.00,
+    duration: '90 mins',
+    features: ['Shaping', 'Trimming', 'Debris Clearance']
+  },
+  {
+    id: 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb',
+    category: "Gardens & Outdoors",
+    title: "Jet Wash Patio (Standard)",
+    description: "High pressure cleaning to remove grime and algae.",
+    price: 250.00,
+    duration: '120 mins',
+    features: ['High Pressure Clean', 'Algae Treatment', 'Furniture Move']
+  },
+  {
+    id: 'cccccccc-cccc-cccc-cccc-cccccccccccc',
+    category: "Gardens & Outdoors",
+    title: "Seasonal Window Box Refresh",
+    description: "Replanting window boxes with seasonal flowers/plants.",
+    price: 150.00,
+    duration: '60 mins',
+    features: ['New Plants Included', 'Compost Refresh', 'Per Box Price']
+  },
+  {
+    id: 'dddddddd-dddd-dddd-dddd-dddddddddddd',
+    category: "Gardens & Outdoors",
+    title: "Green Waste Removal",
+    description: "Collection and disposal of garden waste bags.",
+    price: 80.00,
+    duration: '30 mins',
+    features: ['Loading', 'Disposal Fees', 'Per Load']
   }
 ];

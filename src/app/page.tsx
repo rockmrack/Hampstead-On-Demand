@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Search, Wrench, Zap, Droplet, Hammer, Home as HomeIcon, CheckCircle2, Clock, Shield, Brush, CloudRain, Waves, Lock, Maximize, Wind, Axe, Sun, Key, Sparkles } from "lucide-react";
+import { Search, Wrench, Zap, Droplet, Hammer, Home as HomeIcon, CheckCircle2, Clock, Shield, Brush, CloudRain, Waves, Lock, Maximize, Wind, Axe, Sun, Key, Sparkles, Leaf } from "lucide-react";
 
 export default function Home() {
   const container = {
@@ -41,7 +41,7 @@ export default function Home() {
               Hampstead On-Demand
             </h1>
             <p className="text-xl md:text-2xl opacity-90 max-w-2xl mx-auto font-light">
-              Instant property maintenance for NW London. Transparent pricing. Local team. No call-out fees.
+              We keep your home beautiful, inside and out.
             </p>
           </motion.div>
 
@@ -80,6 +80,7 @@ export default function Home() {
         >
           {[
             { name: 'Housekeeping', icon: Sparkles, color: 'text-slate-600', bg: 'bg-slate-100' },
+            { name: 'Gardens & Outdoors', icon: Leaf, color: 'text-green-600', bg: 'bg-green-50' },
             { name: 'Plumbing', icon: Droplet, color: 'text-blue-500', bg: 'bg-blue-50' },
             { name: 'Electrical', icon: Zap, color: 'text-yellow-500', bg: 'bg-yellow-50' },
             { name: 'Handyman', icon: Hammer, color: 'text-orange-500', bg: 'bg-orange-50' },
