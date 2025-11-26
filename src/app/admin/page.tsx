@@ -1,17 +1,42 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs"
 import { Button } from "@/components/ui/button"
 import { format } from "date-fns"
-import { Loader2, Check, X, MapPin } from "lucide-react"
+import { Loader2, Check, X, MapPin, ShieldAlert } from "lucide-react"
 import Link from "next/link"
 import { Booking } from "@/types"
 
 export default function AdminDashboard() {
   const supabase = createClientComponentClient()
+  const router = useRouter()
   const [bookings, setBookings] = useState<Booking[]>([])
   const [loading, setLoading] = useState(true)
+  const [isAdmin, setIsAdmin] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!user) {
+        router.push('/login')
+        return
+      }
+      const { data: profile } = await supabase
+        .from('users')
+        .select('is_admin')
+        .eq('id', user.id)
+        .single()
+      
+      if (!profile?.is_admin) {
+        setIsAdmin(false)
+        return
+      }
+      setIsAdmin(true)
+    }
+    checkAdmin()
+  }, [supabase, router])
 
   const fetchBookings = async () => {
     setLoading(true)
@@ -49,8 +74,21 @@ export default function AdminDashboard() {
     }
   }
 
-  if (loading) {
+  if (isAdmin === null || loading) {
     return <div className="flex justify-center p-12"><Loader2 className="animate-spin" /></div>
+  }
+
+  if (isAdmin === false) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+        <ShieldAlert className="h-16 w-16 text-destructive" />
+        <h1 className="text-2xl font-bold">Access Denied</h1>
+        <p className="text-muted-foreground">You do not have admin privileges.</p>
+        <Button asChild>
+          <Link href="/">Return Home</Link>
+        </Button>
+      </div>
+    )
   }
 
   return (

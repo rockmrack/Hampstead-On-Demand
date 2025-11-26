@@ -6,6 +6,20 @@ import { Service } from "@/types";
 
 export const dynamic = 'force-dynamic';
 
+// Type for the raw service data from Supabase join query
+interface ServiceRow {
+  id: string;
+  category_id: string;
+  title: string;
+  description: string | null;
+  price: number;
+  duration_minutes: number | null;
+  features: string[] | null;
+  is_active: boolean;
+  created_at: string;
+  category: { name: string } | null;
+}
+
 export default async function ServicesPage({
   searchParams,
 }: {
@@ -14,49 +28,38 @@ export default async function ServicesPage({
   const supabase = createServerComponentClient({ cookies });
   const categoryFilter = searchParams.category;
 
-  let query = supabase
-    .from('services')
-    .select('*, category:categories(name)')
-    .eq('is_active', true);
-
-  // If we have a category filter, we need to filter by the joined category name.
-  // Supabase doesn't support filtering on joined columns easily in one go without !inner or similar.
-  // But since we have a small dataset, we can fetch all and filter in JS, OR use !inner.
-  if (categoryFilter) {
-    query = supabase
-      .from('services')
-      .select('*, category:categories!inner(name)')
-      .eq('is_active', true)
-      .ilike('category.name', categoryFilter); // Case insensitive match? category names are capitalized in DB usually.
-      // Actually, category names in DB are "Plumbing & Heating". Filter is "plumbing".
-      // This is hard to match exactly via DB query if slugs aren't used.
-      // The schema has `icon_slug`. Maybe we should filter by that?
-      // The URL uses `category=plumbing`.
-      // Let's assume we filter in JS for flexibility with the current URL structure.
-  }
-
   const { data: servicesData, error } = await supabase
     .from('services')
     .select('*, category:categories(name)')
     .eq('is_active', true);
     
   if (error) {
-    console.error("Error fetching services:", error);
-    // Fallback or error state? For now, empty list.
+    // In production, this could be sent to an error reporting service
+    throw new Error(`Failed to fetch services: ${error.message}`);
   }
 
-  let services: Service[] = (servicesData || []).map((s: any) => ({
-    ...s,
+  // Transform database rows to frontend Service type with proper typing
+  let services: Service[] = (servicesData as ServiceRow[] || []).map((s) => ({
+    id: s.id,
+    category_id: s.category_id,
     category: s.category?.name || 'Uncategorized',
-    duration: `${s.duration_minutes} mins`,
-    features: s.features || []
+    title: s.title,
+    description: s.description || '',
+    price: s.price,
+    duration: `${s.duration_minutes || 0} mins`,
+    duration_minutes: s.duration_minutes || 0,
+    features: s.features || [],
+    is_active: s.is_active,
   }));
 
+  // Filter by category if provided (handles partial matching like "plumbing" -> "Plumbing & Heating")
   if (categoryFilter) {
-    services = services.filter(s => 
-      s.category.toLowerCase().includes(categoryFilter.toLowerCase()) || 
-      categoryFilter.toLowerCase().includes(s.category.toLowerCase().split(' ')[0]) // Handle "Plumbing" vs "Plumbing & Heating"
-    );
+    const filterLower = categoryFilter.toLowerCase();
+    services = services.filter(s => {
+      const categoryLower = s.category.toLowerCase();
+      return categoryLower.includes(filterLower) || 
+        filterLower.includes(categoryLower.split(' ')[0]);
+    });
   }
 
   return (

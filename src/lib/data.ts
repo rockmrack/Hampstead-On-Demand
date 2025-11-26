@@ -1,5 +1,18 @@
 import { Service } from "@/types";
 
+/**
+ * IMPORTANT: This file serves as a reference/fallback data source.
+ * The primary data source is the Supabase database (schema.sql).
+ * 
+ * This static data is used for:
+ * 1. Local development without database connection
+ * 2. Reference for database seeding
+ * 3. Type checking and feature reference
+ * 
+ * DO NOT use this file directly in production components.
+ * Always fetch from Supabase in production.
+ */
+
 export const services: Service[] = [
   // --- 1. PLUMBING (Aspect Match) ---
   {
