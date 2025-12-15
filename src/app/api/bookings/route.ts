@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 import { z } from 'zod';
+import { checkRateLimit, getClientIdentifier, createRateLimitHeaders, RATE_LIMIT_PRESETS } from '@/lib/rate-limit';
 
 // Zod schema for input validation
 const bookingEmailSchema = z.object({
@@ -15,6 +16,23 @@ const bookingEmailSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    // Rate limit check
+    const clientId = getClientIdentifier(request);
+    const rateLimitResult = checkRateLimit(`bookings:${clientId}`, RATE_LIMIT_PRESETS.standard);
+    
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: 'Too many requests', message: 'Please wait before submitting another booking.' },
+        { 
+          status: 429, 
+          headers: {
+            ...createRateLimitHeaders(rateLimitResult),
+            'Retry-After': Math.ceil((rateLimitResult.resetAt - Date.now()) / 1000).toString(),
+          }
+        }
+      );
+    }
+
     const resendApiKey = process.env.RESEND_API_KEY;
     const adminEmail = process.env.ADMIN_EMAIL;
     

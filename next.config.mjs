@@ -1,3 +1,5 @@
+import { withSentryConfig } from "@sentry/nextjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -21,4 +23,17 @@ const nextConfig = {
   poweredByHeader: false,
 };
 
-export default nextConfig;
+// Sentry configuration options
+const sentryWebpackPluginOptions = {
+  // Only upload source maps in production with a valid auth token
+  silent: true,
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  // Disable source map uploading if no auth token
+  dryRun: !process.env.SENTRY_AUTH_TOKEN,
+};
+
+// Export with Sentry wrapper (only wraps if Sentry is configured)
+export default process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN
+  ? withSentryConfig(nextConfig, sentryWebpackPluginOptions)
+  : nextConfig;

@@ -7,6 +7,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { services } from "@/lib/data";
+import { checkRateLimit, getClientIdentifier, createRateLimitHeaders, RATE_LIMIT_PRESETS } from "@/lib/rate-limit";
 
 // Request validation schema
 const chatRequestSchema = z.object({
@@ -239,6 +240,23 @@ What would you like to know more about?`;
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit check - more lenient for chat
+    const clientId = getClientIdentifier(request);
+    const rateLimitResult = checkRateLimit(`chat:${clientId}`, RATE_LIMIT_PRESETS.lenient);
+    
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: 'Too many requests', message: 'Please wait a moment before sending another message.' },
+        { 
+          status: 429, 
+          headers: {
+            ...createRateLimitHeaders(rateLimitResult),
+            'Retry-After': Math.ceil((rateLimitResult.resetAt - Date.now()) / 1000).toString(),
+          }
+        }
+      );
+    }
+
     const body = await request.json();
     
     // Validate request
