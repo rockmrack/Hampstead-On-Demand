@@ -39,32 +39,33 @@ export default function Navbar() {
     <>
       {/* Desktop Header */}
       <header
-        className="hidden md:flex items-center justify-between px-6 py-4 bg-white border-b sticky top-0 z-50"
+        className="hidden md:flex items-center justify-between px-6 py-4 bg-white/98 backdrop-blur-glass border-b border-border/50 sticky top-0 z-50 shadow-sm"
         role="banner"
       >
         <Link
           href="/"
-          className="text-xl font-bold text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
+          className="flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
           aria-label="Hampstead On-Demand - Home"
         >
-          Hampstead On-Demand
+          <span className="text-xl font-bold text-primary font-heading tracking-tight">Hampstead On-Demand</span>
+          <span className="text-[10px] font-semibold text-accent tracking-[0.15em] uppercase -mt-0.5">PROPERTY MAINTENANCE</span>
         </Link>
         <nav className="flex gap-6" role="navigation" aria-label="Main navigation">
           <Link
             href="/"
-            className="text-gray-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
+            className="text-foreground/70 hover:text-primary font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
           >
             Home
           </Link>
           <Link
             href="/services"
-            className="text-gray-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
+            className="text-foreground/70 hover:text-primary font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
           >
             Services
           </Link>
           <Link
             href="/bookings"
-            className="text-gray-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
+            className="text-foreground/70 hover:text-primary font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
           >
             My Bookings
           </Link>
@@ -74,7 +75,7 @@ export default function Navbar() {
             <>
               <Link
                 href="/profile"
-                className="text-gray-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
+                className="text-foreground/70 hover:text-primary font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
               >
                 Profile
               </Link>
@@ -82,7 +83,7 @@ export default function Navbar() {
                 variant="outline"
                 size="sm"
                 onClick={handleSignOut}
-                className="gap-2"
+                className="gap-2 border-primary/20 hover:bg-primary/5"
               >
                 <LogOut className="h-4 w-4" />
                 Sign out
@@ -92,13 +93,13 @@ export default function Navbar() {
             <>
               <Link
                 href="/login"
-                className="text-primary font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
+                className="text-primary font-semibold hover:text-primary/80 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-3 py-2"
               >
                 Log in
               </Link>
               <Link
                 href="/signup"
-                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+                className="bg-accent text-accent-foreground px-5 py-2.5 rounded-lg hover:bg-accent/90 transition-all shadow-md hover:shadow-lg font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
               >
                 Sign up
               </Link>

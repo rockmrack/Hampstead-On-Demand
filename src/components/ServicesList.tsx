@@ -30,6 +30,27 @@ export default function ServicesList({ services, categoryFilter, searchQuery }: 
     show: { opacity: 1, y: 0 }
   };
 
+  const getCategoryColor = (category: string): string => {
+    const categoryMap: Record<string, string> = {
+      'Plumbing': 'bg-blue-500',
+      'Electrical': 'bg-amber-500',
+      'Handyman': 'bg-green-600',
+      'Carpentry': 'bg-amber-800',
+      'Painting': 'bg-purple-500',
+      'Roofing': 'bg-red-500',
+      'Drainage': 'bg-teal-500',
+      'Locksmith': 'bg-slate-700',
+      'Glazing': 'bg-cyan-500',
+      'HVAC': 'bg-cyan-600',
+      'Renovation': 'bg-slate-800',
+      'Seasonal': 'bg-orange-500',
+      'Landlord': 'bg-stone-600',
+      'Housekeeping': 'bg-pink-600',
+      'Gardens': 'bg-green-500',
+    };
+    return categoryMap[category] || 'bg-primary';
+  };
+
   const isHousekeeping = categoryFilter === 'Housekeeping';
   const pageTitle = searchQuery
     ? `Search Results for "${searchQuery}"`
@@ -44,16 +65,16 @@ export default function ServicesList({ services, categoryFilter, searchQuery }: 
       aria-labelledby="services-heading"
     >
       <div className="mb-12 text-center">
-        <h1 id="services-heading" className="text-4xl font-bold tracking-tight mb-4">
+        <h1 id="services-heading" className="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-heading text-primary">
           {pageTitle}
         </h1>
         {isHousekeeping && (
-          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full shadow-sm text-sm font-medium text-slate-700">
-            <span className="text-blue-600" aria-hidden="true">🛡️</span>
+          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white border border-border rounded-full shadow-premium text-sm font-medium text-foreground">
+            <span className="text-primary" aria-hidden="true">🛡️</span>
             <span>Vetted, Insured &amp; Employed by Hampstead Renovations</span>
           </div>
         )}
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-body">
           Transparent pricing. No hidden fees. Book in seconds.
         </p>
       </div>
@@ -68,12 +89,12 @@ export default function ServicesList({ services, categoryFilter, searchQuery }: 
       >
         {services.map((service) => (
           <motion.div variants={item} key={service.id} role="listitem">
-            <Card 
-              className={`h-full flex flex-col hover:shadow-md transition-shadow duration-200 relative overflow-hidden ${service.category === 'Housekeeping' ? 'border-slate-200 bg-white' : ''}`}
+            <Card
+              className="h-full flex flex-col hover:shadow-premium-hover transition-all duration-300 relative overflow-hidden shadow-premium border-border/50"
               aria-labelledby={`service-title-${service.id}`}
             >
-              <div 
-                className={`absolute top-0 right-0 text-xs font-bold px-3 py-1 rounded-bl-lg z-10 ${service.category === 'Housekeeping' ? 'bg-slate-200 text-slate-800' : 'bg-primary text-primary-foreground'}`}
+              <div
+                className={`absolute top-0 right-0 text-xs font-bold px-3 py-1 rounded-bl-lg z-10 ${getCategoryColor(service.category)} text-white`}
                 aria-label="Fixed price service"
               >
                 Fixed Price
@@ -81,15 +102,18 @@ export default function ServicesList({ services, categoryFilter, searchQuery }: 
               <CardHeader>
                 <div className="flex justify-between items-start gap-4">
                   <div>
-                    <Badge variant={service.category === 'Housekeeping' ? "outline" : "secondary"} className="mb-2">
+                    <Badge
+                      variant="secondary"
+                      className={`mb-2 ${getCategoryColor(service.category)} text-white border-0`}
+                    >
                       {service.category}
                     </Badge>
-                    <CardTitle id={`service-title-${service.id}`} className="text-xl">
+                    <CardTitle id={`service-title-${service.id}`} className="text-xl font-heading text-primary">
                       {service.title}
                     </CardTitle>
                   </div>
                 </div>
-                <CardDescription className="text-base mt-2">
+                <CardDescription className="text-base mt-2 font-body">
                   {service.description}
                 </CardDescription>
               </CardHeader>
@@ -101,10 +125,10 @@ export default function ServicesList({ services, categoryFilter, searchQuery }: 
                   </span>
                 </div>
                 
-                <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-muted">
+                <div className="mb-6 p-4 bg-muted/30 rounded-lg border border-border">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium text-muted-foreground">Fixed Price</span>
-                    <span className="text-2xl font-bold text-primary" aria-label={`Price: £${service.price}`}>
+                    <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Fixed Price</span>
+                    <span className="text-2xl font-bold text-accent font-heading" aria-label={`Price: £${service.price}`}>
                       £{service.price}
                     </span>
                   </div>
@@ -122,8 +146,8 @@ export default function ServicesList({ services, categoryFilter, searchQuery }: 
                 )}
               </CardContent>
               <CardFooter>
-                <Button asChild className="w-full group">
-                  <Link 
+                <Button asChild className="w-full group bg-accent hover:bg-accent/90 shadow-md hover:shadow-lg transition-all">
+                  <Link
                     href={`/book/${service.id}`}
                     aria-label={`Book ${service.title} for £${service.price}`}
                   >
