@@ -1,63 +1,60 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
-import { Shield, CheckCircle2, Clock, Star, Phone, MapPin, Award, Users, Calendar, Wrench } from "lucide-react";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
+      <main className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-light to-primary py-32 md:py-40 px-6">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}></div>
-          
-          <div className="max-w-5xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-accent rounded-full text-white text-xs font-bold uppercase tracking-wider mb-8">
-              <Star className="w-4 h-4 fill-current" />
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#2c3e50] via-[#34495e] to-[#2c3e50] py-20 md:py-32 px-4 md:px-6">
+          <div className="max-w-6xl mx-auto text-center relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#8b7355] rounded-full text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-6">
+              <span>⭐</span>
               <span>On-Demand Property Services</span>
-              <Star className="w-4 h-4 fill-current" />
+              <span>⭐</span>
             </div>
             
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight">
-              Expert Tradespeople Available <br className="hidden md:block" />When You Need Them
+            <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.2]">
+              Expert Tradespeople Available<br />
+              When You Need Them
             </h1>
             
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <p className="text-base md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
               From emergency plumbing to routine maintenance, Hampstead On-Demand connects you with trusted local professionals. Fixed prices, instant booking, guaranteed quality.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4 mb-10">
-              <div className="flex items-center gap-2 text-white/90">
-                <CheckCircle2 className="w-5 h-5 text-accent-light" />
+            <ul className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10 text-sm md:text-base">
+              <li className="flex items-center gap-2 text-white/95">
+                <svg className="w-5 h-5 text-[#8b7355]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
                 <span>Vetted Professionals</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/90">
-                <CheckCircle2 className="w-5 h-5 text-accent-light" />
+              </li>
+              <li className="flex items-center gap-2 text-white/95">
+                <svg className="w-5 h-5 text-[#8b7355]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
                 <span>Fixed Transparent Pricing</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/90">
-                <CheckCircle2 className="w-5 h-5 text-accent-light" />
+              </li>
+              <li className="flex items-center gap-2 text-white/95">
+                <svg className="w-5 h-5 text-[#8b7355]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
                 <span>Instant Availability</span>
-              </div>
-            </div>
+              </li>
+              <li className="flex items-center gap-2 text-white/95">
+                <svg className="w-5 h-5 text-[#8b7355]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+                <span>Quality Guaranteed</span>
+              </li>
+            </ul>
             
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-accent-light transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 uppercase tracking-wide text-sm"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#8b7355] text-white font-semibold rounded-md hover:bg-[#9d8466] transition-all shadow-lg uppercase tracking-wide text-sm"
               >
-                <Calendar className="w-5 h-5" />
                 Book Service Now
               </Link>
               <Link
                 href="tel:07459345456"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-grey-light transition-all shadow-lg hover:-translate-y-0.5 uppercase tracking-wide text-sm"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#2c3e50] font-semibold rounded-md hover:bg-gray-100 transition-all shadow-lg uppercase tracking-wide text-sm"
               >
-                <Phone className="w-5 h-5" />
                 Call 07459 345456
               </Link>
             </div>
@@ -65,105 +62,99 @@ export default function Home() {
         </section>
 
         {/* Trust Bar */}
-        <section className="bg-grey-light py-8 px-6">
-          <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-6 gap-6 text-center">
-            <div className="p-4">
-              <div className="font-heading text-3xl font-bold text-accent mb-1">15+</div>
-              <div className="text-xs font-semibold text-primary uppercase tracking-wide">Years Trading</div>
-            </div>
-            <div className="p-4">
-              <div className="font-heading text-3xl font-bold text-accent mb-1">2000+</div>
-              <div className="text-xs font-semibold text-primary uppercase tracking-wide">Jobs Completed</div>
-            </div>
-            <div className="p-4">
-              <div className="font-heading text-3xl font-bold text-accent mb-1">£5M</div>
-              <div className="text-xs font-semibold text-primary uppercase tracking-wide">Insurance Cover</div>
-            </div>
-            <div className="p-4">
-              <div className="font-heading text-3xl font-bold text-accent mb-1">4.9★</div>
-              <div className="text-xs font-semibold text-primary uppercase tracking-wide">Average Rating</div>
-            </div>
-            <div className="p-4">
-              <div className="font-heading text-3xl font-bold text-accent mb-1">50+</div>
-              <div className="text-xs font-semibold text-primary uppercase tracking-wide">Professionals</div>
-            </div>
-            <div className="p-4">
-              <div className="font-heading text-3xl font-bold text-accent mb-1">24/7</div>
-              <div className="text-xs font-semibold text-primary uppercase tracking-wide">Availability</div>
+        <section className="bg-[#f5f7f9] py-8 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-6 text-center">
+              <div>
+                <div className="font-heading text-3xl md:text-4xl font-bold text-[#8b7355] mb-1">15+</div>
+                <div className="text-xs font-semibold text-[#2c3e50] uppercase tracking-wide">Years Trading</div>
+              </div>
+              <div>
+                <div className="font-heading text-3xl md:text-4xl font-bold text-[#8b7355] mb-1">2000+</div>
+                <div className="text-xs font-semibold text-[#2c3e50] uppercase tracking-wide">Jobs Completed</div>
+              </div>
+              <div>
+                <div className="font-heading text-3xl md:text-4xl font-bold text-[#8b7355] mb-1">£5M</div>
+                <div className="text-xs font-semibold text-[#2c3e50] uppercase tracking-wide">Insurance Cover</div>
+              </div>
+              <div>
+                <div className="font-heading text-3xl md:text-4xl font-bold text-[#8b7355] mb-1">4.9★</div>
+                <div className="text-xs font-semibold text-[#2c3e50] uppercase tracking-wide">Average Rating</div>
+              </div>
+              <div>
+                <div className="font-heading text-3xl md:text-4xl font-bold text-[#8b7355] mb-1">50+</div>
+                <div className="text-xs font-semibold text-[#2c3e50] uppercase tracking-wide">Professionals</div>
+              </div>
+              <div>
+                <div className="font-heading text-3xl md:text-4xl font-bold text-[#8b7355] mb-1">24/7</div>
+                <div className="text-xs font-semibold text-[#2c3e50] uppercase tracking-wide">Availability</div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Why Choose Us */}
-        <section className="bg-gradient-to-br from-dark via-primary to-primary-light py-24 px-6 text-white">
+        {/* Intro Section */}
+        <section className="py-16 md:py-24 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-block text-xs font-bold tracking-widest uppercase text-accent-light mb-4 relative">
-                <span className="absolute right-full mr-4 top-1/2 w-10 h-px bg-accent-light"></span>
-                Why Choose Us
-                <span className="absolute left-full ml-4 top-1/2 w-10 h-px bg-accent-light"></span>
-              </div>
-              <h2 className="font-heading text-3xl md:text-4xl mb-4">Your Trusted Property Partner</h2>
-              <p className="text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+              <div className="text-xs font-bold tracking-[0.2em] uppercase text-[#8b7355] mb-3">Why Choose Us</div>
+              <h2 className="font-heading text-3xl md:text-5xl text-[#2c3e50] mb-4">Your Trusted Property Partner</h2>
+              <p className="text-base md:text-lg text-[#607d8b] max-w-2xl mx-auto leading-relaxed">
                 We've simplified property maintenance with instant access to verified professionals and transparent fixed pricing
               </p>
             </div>
             
-            <div className="grid md:grid-cols-4 gap-8">
-              <div className="bg-white/8 backdrop-blur-lg border border-white/12 rounded-xl p-8 text-center hover:bg-white/12 transition-all hover:-translate-y-1">
-                <div className="w-14 h-14 mx-auto mb-5 bg-accent rounded-xl flex items-center justify-center">
-                  <Shield className="w-7 h-7 text-white" />
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:border-[#8b7355] hover:shadow-xl transition-all">
+                <div className="w-16 h-16 mx-auto mb-6 bg-[#8b7355] rounded-lg flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
-                <h3 className="font-body text-lg font-bold mb-3">Vetted Experts</h3>
-                <p className="text-sm text-white/80 leading-relaxed">All professionals are background-checked, insured, and verified for quality</p>
+                <h3 className="font-heading text-xl text-[#2c3e50] mb-3">Vetted Experts</h3>
+                <p className="text-sm text-[#607d8b] leading-relaxed">All professionals are background-checked, insured, and verified for quality</p>
               </div>
               
-              <div className="bg-white/8 backdrop-blur-lg border border-white/12 rounded-xl p-8 text-center hover:bg-white/12 transition-all hover:-translate-y-1">
-                <div className="w-14 h-14 mx-auto mb-5 bg-accent rounded-xl flex items-center justify-center">
-                  <Award className="w-7 h-7 text-white" />
+              <div className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:border-[#8b7355] hover:shadow-xl transition-all">
+                <div className="w-16 h-16 mx-auto mb-6 bg-[#8b7355] rounded-lg flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <h3 className="font-body text-lg font-bold mb-3">Fixed Prices</h3>
-                <p className="text-sm text-white/80 leading-relaxed">Transparent pricing with no hidden costs or surprise fees at completion</p>
+                <h3 className="font-heading text-xl text-[#2c3e50] mb-3">Fixed Prices</h3>
+                <p className="text-sm text-[#607d8b] leading-relaxed">Transparent pricing with no hidden costs or surprise fees at completion</p>
               </div>
               
-              <div className="bg-white/8 backdrop-blur-lg border border-white/12 rounded-xl p-8 text-center hover:bg-white/12 transition-all hover:-translate-y-1">
-                <div className="w-14 h-14 mx-auto mb-5 bg-accent rounded-xl flex items-center justify-center">
-                  <Clock className="w-7 h-7 text-white" />
+              <div className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:border-[#8b7355] hover:shadow-xl transition-all">
+                <div className="w-16 h-16 mx-auto mb-6 bg-[#8b7355] rounded-lg flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <h3 className="font-body text-lg font-bold mb-3">Instant Booking</h3>
-                <p className="text-sm text-white/80 leading-relaxed">Choose your time slot and book online—confirmation within minutes</p>
+                <h3 className="font-heading text-xl text-[#2c3e50] mb-3">Instant Booking</h3>
+                <p className="text-sm text-[#607d8b] leading-relaxed">Choose your time slot and book online—confirmation within minutes</p>
               </div>
               
-              <div className="bg-white/8 backdrop-blur-lg border border-white/12 rounded-xl p-8 text-center hover:bg-white/12 transition-all hover:-translate-y-1">
-                <div className="w-14 h-14 mx-auto mb-5 bg-accent rounded-xl flex items-center justify-center">
-                  <Users className="w-7 h-7 text-white" />
+              <div className="bg-white border border-gray-200 rounded-lg p-8 text-center hover:border-[#8b7355] hover:shadow-xl transition-all">
+                <div className="w-16 h-16 mx-auto mb-6 bg-[#8b7355] rounded-lg flex items-center justify-center">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                 </div>
-                <h3 className="font-body text-lg font-bold mb-3">Local Team</h3>
-                <p className="text-sm text-white/80 leading-relaxed">North West London specialists who know the area and properties</p>
+                <h3 className="font-heading text-xl text-[#2c3e50] mb-3">Local Team</h3>
+                <p className="text-sm text-[#607d8b] leading-relaxed">North West London specialists who know the area and properties</p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Services Preview */}
-        <section className="py-24 px-6">
+        {/* Services Section */}
+        <section className="bg-[#f5f7f9] py-16 md:py-24 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-block text-xs font-bold tracking-widest uppercase text-accent mb-4 relative">
-                <span className="absolute right-full mr-4 top-1/2 w-10 h-px bg-accent"></span>
-                Our Services
-                <span className="absolute left-full ml-4 top-1/2 w-10 h-px bg-accent"></span>
-              </div>
-              <h2 className="font-heading text-3xl md:text-4xl text-primary mb-4">Complete Property Solutions</h2>
-              <p className="text-lg text-grey max-w-2xl mx-auto leading-relaxed">
+              <div className="text-xs font-bold tracking-[0.2em] uppercase text-[#8b7355] mb-3">Our Services</div>
+              <h2 className="font-heading text-3xl md:text-5xl text-[#2c3e50] mb-4">Complete Property Solutions</h2>
+              <p className="text-base md:text-lg text-[#607d8b] max-w-2xl mx-auto leading-relaxed">
                 From emergency repairs to planned maintenance across all trades
               </p>
             </div>
             
-            <div className="grid md:grid-cols-4 gap-6 mb-12">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {[
-                { name: "Plumbing Services", desc: "Emergency & planned plumbing", price: "From £75", icon: "💧" },
-                { name: "Electrical Work", desc: "Certified electricians available", price: "From £85", icon: "⚡" },
+                { name: "Plumbing Services", desc: "Emergency & planned plumbing work", price: "From £75", icon: "💧" },
+                { name: "Electrical Work", desc: "Certified electricians available 24/7", price: "From £85", icon: "⚡" },
                 { name: "Handyman Services", desc: "General repairs & maintenance", price: "From £65", icon: "🔧" },
                 { name: "Carpentry", desc: "Custom woodwork & repairs", price: "From £90", icon: "🪚" },
                 { name: "Painting & Decorating", desc: "Interior & exterior work", price: "From £70", icon: "🎨" },
@@ -171,14 +162,16 @@ export default function Home() {
                 { name: "HVAC Services", desc: "Heating & cooling systems", price: "From £100", icon: "❄️" },
                 { name: "Locksmith", desc: "24/7 emergency access", price: "From £80", icon: "🔑" },
               ].map((service, i) => (
-                <div key={i} className="bg-white border border-grey-light rounded-lg p-6 text-center hover:border-accent hover:shadow-lg transition-all hover:-translate-y-1 group relative overflow-hidden">
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent via-accent-light to-accent transform scale-x-0 group-hover:scale-x-100 transition-transform"></div>
-                  <div className="w-13 h-13 mx-auto mb-4 bg-gradient-to-br from-accent to-accent-light rounded-lg flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                <div key={i} className="bg-white border border-gray-200 rounded-lg p-6 hover:border-[#8b7355] hover:shadow-xl transition-all group relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#8b7355] to-[#9d8466] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  <div className="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-[#8b7355] to-[#9d8466] rounded-lg flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
                     {service.icon}
                   </div>
-                  <h3 className="font-body text-lg font-bold text-primary mb-2">{service.name}</h3>
-                  <p className="text-sm text-grey mb-3 leading-relaxed">{service.desc}</p>
-                  <span className="inline-block px-3 py-1 bg-grey-light text-accent text-xs font-bold rounded-full">{service.price}</span>
+                  <h3 className="font-heading text-lg text-[#2c3e50] mb-2 text-center">{service.name}</h3>
+                  <p className="text-sm text-[#607d8b] mb-4 text-center leading-relaxed">{service.desc}</p>
+                  <div className="text-center">
+                    <span className="inline-block px-3 py-1 bg-[#8b7355]/10 text-[#8b7355] text-xs font-bold rounded-full">{service.price}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -186,28 +179,26 @@ export default function Home() {
             <div className="text-center">
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-accent-light transition-all shadow-md hover:shadow-lg uppercase tracking-wide text-sm"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#8b7355] text-white font-semibold rounded-md hover:bg-[#9d8466] transition-all shadow-md uppercase tracking-wide text-sm"
               >
-                <Wrench className="w-5 h-5" />
                 View All Services
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Areas Served */}
-        <section className="bg-grey-light py-16 px-6">
+        {/* Areas Section */}
+        <section className="py-16 md:py-24 px-4">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <div className="inline-block text-xs font-bold tracking-widest uppercase text-accent mb-4">Service Areas</div>
-              <h2 className="font-heading text-3xl text-primary mb-4">Serving North West London</h2>
+              <div className="text-xs font-bold tracking-[0.2em] uppercase text-[#8b7355] mb-3">Service Areas</div>
+              <h2 className="font-heading text-3xl md:text-5xl text-[#2c3e50] mb-4">Serving North West London</h2>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            <div className="flex flex-wrap justify-center gap-3">
               {["NW3 Hampstead", "NW8 St John's Wood", "NW1 Primrose Hill", "NW6 West Hampstead", "NW11 Golders Green", "N6 Highgate", "N2 East Finchley", "N10 Muswell Hill", "N8 Crouch End", "N1 Islington"].map((area, i) => (
-                <div key={i} className="bg-white rounded-full px-6 py-4 text-center border-2 border-transparent hover:border-accent transition-all cursor-pointer">
-                  <div className="font-heading text-lg font-bold text-primary mb-0.5">{area.split(' ')[0]}</div>
-                  <div className="text-xs text-grey">{area.split(' ').slice(1).join(' ')}</div>
+                <div key={i} className="px-6 py-3 bg-white border-2 border-gray-200 rounded-full hover:border-[#8b7355] hover:bg-[#8b7355] hover:text-white transition-all cursor-pointer">
+                  <span className="text-sm font-semibold">{area}</span>
                 </div>
               ))}
             </div>
@@ -215,33 +206,26 @@ export default function Home() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-6">
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-primary via-primary-light to-primary rounded-2xl p-12 md:p-16 text-center relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10 animate-rotate" style={{
-              background: 'radial-gradient(circle, rgba(139, 115, 85, 0.2) 0%, transparent 60%)'
-            }}></div>
+        <section className="bg-gradient-to-br from-[#2c3e50] via-[#34495e] to-[#2c3e50] py-20 px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="font-heading text-3xl md:text-5xl text-white mb-6">Ready to Book a Service?</h2>
+            <p className="text-base md:text-xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Choose your service, select a time slot, and book instantly. No phone calls, no waiting—just simple online booking.
+            </p>
             
-            <div className="relative z-10">
-              <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">Ready to Book a Service?</h2>
-              <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-                Choose your service, select a time slot, and book instantly. No phone calls, no waiting—just simple online booking.
-              </p>
-              
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link
-                  href="/services"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary font-semibold rounded-lg hover:bg-grey-light transition-all shadow-lg uppercase tracking-wide text-sm"
-                >
-                  Browse Services
-                </Link>
-                <Link
-                  href="tel:07459345456"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-accent-light transition-all shadow-lg uppercase tracking-wide text-sm border-2 border-white/20"
-                >
-                  <Phone className="w-5 h-5" />
-                  Call Now
-                </Link>
-              </div>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link
+                href="/services"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#2c3e50] font-semibold rounded-md hover:bg-gray-100 transition-all shadow-lg uppercase tracking-wide text-sm"
+              >
+                Browse Services
+              </Link>
+              <Link
+                href="tel:07459345456"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#8b7355] text-white font-semibold rounded-md hover:bg-[#9d8466] transition-all shadow-lg uppercase tracking-wide text-sm"
+              >
+                Call 07459 345456
+              </Link>
             </div>
           </div>
         </section>
