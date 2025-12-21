@@ -1,11 +1,13 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import HeroSearch from "@/components/HeroSearch";
 import AnimatedCategories from "@/components/AnimatedCategories";
 import { Shield, CheckCircle2, Clock } from "lucide-react";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background pb-20 md:pb-0">
+    <>
+      <main className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section - Client Component for animations */}
@@ -55,5 +57,7 @@ export default function Home() {
         </div>
       </section>
     </main>
+    <Footer />
+    </>
   );
 }

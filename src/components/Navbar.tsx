@@ -1,54 +1,109 @@
+"use client"
+
 import Link from "next/link";
-import { Home, Search, Calendar, User } from "lucide-react";
+import { Home, Search, Calendar, User, LogOut } from "lucide-react";
+import { useEffect, useState } from "react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function Navbar() {
+  const [user, setUser] = useState<any>(null)
+  const router = useRouter()
+  const supabase = createClientComponentClient()
+
+  useEffect(() => {
+    async function getUser() {
+      const { data: { user } } = await supabase.auth.getUser()
+      setUser(user)
+    }
+
+    getUser()
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
+  }, [supabase])
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    toast.success("Signed out successfully")
+    router.push("/")
+    router.refresh()
+  }
+
   return (
     <>
       {/* Desktop Header */}
-      <header 
+      <header
         className="hidden md:flex items-center justify-between px-6 py-4 bg-white border-b sticky top-0 z-50"
         role="banner"
       >
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           className="text-xl font-bold text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded"
           aria-label="Hampstead On-Demand - Home"
         >
           Hampstead On-Demand
         </Link>
         <nav className="flex gap-6" role="navigation" aria-label="Main navigation">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             className="text-gray-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
           >
             Home
           </Link>
-          <Link 
-            href="/services" 
+          <Link
+            href="/services"
             className="text-gray-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
           >
             Services
           </Link>
-          <Link 
-            href="/bookings" 
+          <Link
+            href="/bookings"
             className="text-gray-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
           >
             My Bookings
           </Link>
         </nav>
-        <div className="flex gap-4" role="group" aria-label="Account actions">
-          <Link 
-            href="/login" 
-            className="text-primary font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
-          >
-            Log in
-          </Link>
-          <Link 
-            href="/signup" 
-            className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          >
-            Sign up
-          </Link>
+        <div className="flex gap-4 items-center" role="group" aria-label="Account actions">
+          {user ? (
+            <>
+              <Link
+                href="/profile"
+                className="text-gray-600 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
+              >
+                Profile
+              </Link>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleSignOut}
+                className="gap-2"
+              >
+                <LogOut className="h-4 w-4" />
+                Sign out
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="text-primary font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded px-2 py-1"
+              >
+                Log in
+              </Link>
+              <Link
+                href="/signup"
+                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
+              >
+                Sign up
+              </Link>
+            </>
+          )}
         </div>
       </header>
 

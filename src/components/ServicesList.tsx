@@ -11,9 +11,10 @@ import { Service } from "@/types";
 interface ServicesListProps {
   services: Service[];
   categoryFilter?: string;
+  searchQuery?: string;
 }
 
-export default function ServicesList({ services, categoryFilter }: ServicesListProps) {
+export default function ServicesList({ services, categoryFilter, searchQuery }: ServicesListProps) {
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -30,9 +31,11 @@ export default function ServicesList({ services, categoryFilter }: ServicesListP
   };
 
   const isHousekeeping = categoryFilter === 'Housekeeping';
-  const pageTitle = categoryFilter 
-    ? `${categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1)} Services` 
-    : 'All Services';
+  const pageTitle = searchQuery
+    ? `Search Results for "${searchQuery}"`
+    : categoryFilter
+      ? `${categoryFilter.charAt(0).toUpperCase() + categoryFilter.slice(1)} Services`
+      : 'All Services';
 
   return (
     <main 
@@ -136,7 +139,11 @@ export default function ServicesList({ services, categoryFilter }: ServicesListP
 
       {services.length === 0 && (
         <div className="text-center py-12" role="status" aria-live="polite">
-          <p className="text-muted-foreground">No services found in this category.</p>
+          <p className="text-muted-foreground">
+            {searchQuery
+              ? `No services found matching "${searchQuery}"`
+              : 'No services found in this category.'}
+          </p>
           <Button variant="link" asChild className="mt-4">
             <Link href="/services">View all services</Link>
           </Button>

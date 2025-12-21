@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import ServicesList from "@/components/ServicesList";
@@ -23,10 +24,11 @@ interface ServiceRow {
 export default async function ServicesPage({
   searchParams,
 }: {
-  searchParams: { category?: string };
+  searchParams: { category?: string; search?: string };
 }) {
   const supabase = createServerComponentClient({ cookies });
   const categoryFilter = searchParams.category;
+  const searchQuery = searchParams.search;
 
   const { data: servicesData, error } = await supabase
     .from('services')
@@ -57,15 +59,28 @@ export default async function ServicesPage({
     const filterLower = categoryFilter.toLowerCase();
     services = services.filter(s => {
       const categoryLower = s.category.toLowerCase();
-      return categoryLower.includes(filterLower) || 
+      return categoryLower.includes(filterLower) ||
         filterLower.includes(categoryLower.split(' ')[0]);
     });
   }
 
+  // Filter by search query if provided
+  if (searchQuery) {
+    const queryLower = searchQuery.toLowerCase();
+    services = services.filter(s =>
+      s.title.toLowerCase().includes(queryLower) ||
+      s.description.toLowerCase().includes(queryLower) ||
+      s.category.toLowerCase().includes(queryLower)
+    );
+  }
+
   return (
-    <main className="min-h-screen bg-muted/30 pb-20 md:pb-0">
-      <Navbar />
-      <ServicesList services={services} categoryFilter={categoryFilter} />
-    </main>
+    <>
+      <main className="min-h-screen bg-muted/30">
+        <Navbar />
+        <ServicesList services={services} categoryFilter={categoryFilter} searchQuery={searchQuery} />
+      </main>
+      <Footer />
+    </>
   );
 }

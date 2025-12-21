@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Link from "next/link"
 import { toast } from "sonner"
 import { Loader2 } from "lucide-react"
+import Navbar from "@/components/Navbar"
 
 export default function SignupPage({ searchParams }: { searchParams: { plan?: string } }) {
   const [email, setEmail] = useState("")
@@ -45,8 +46,10 @@ export default function SignupPage({ searchParams }: { searchParams: { plan?: st
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-muted/30 px-4">
-      <Card className="w-full max-w-md">
+    <>
+      <Navbar />
+      <div className="min-h-screen flex items-center justify-center bg-muted/30 px-4 pb-20 md:pb-0">
+        <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold">
             {isPlus ? "Join Hampstead Plus" : "Create an account"}
@@ -96,5 +99,6 @@ export default function SignupPage({ searchParams }: { searchParams: { plan?: st
         </form>
       </Card>
     </div>
+    </>
   )
 }

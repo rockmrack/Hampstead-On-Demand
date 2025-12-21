@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Loader2, AlertTriangle } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { ServiceRequest } from "@/types"
+import Navbar from "@/components/Navbar"
 
 export default function ClientDashboard() {
   const supabase = createClientComponentClient()
@@ -35,10 +36,17 @@ export default function ClientDashboard() {
     fetchReports()
   }, [supabase, router])
 
-  if (loading) return <div className="flex justify-center p-12"><Loader2 className="animate-spin" /></div>
+  if (loading) return (
+    <>
+      <Navbar />
+      <div className="flex justify-center p-12 pb-20 md:pb-12"><Loader2 className="animate-spin" /></div>
+    </>
+  )
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
+    <>
+      <Navbar />
+      <div className="max-w-4xl mx-auto px-6 py-12 pb-20 md:pb-12">
       <h1 className="text-3xl font-bold mb-8">My Dashboard</h1>
 
       {reports.length > 0 ? (
@@ -70,5 +78,6 @@ export default function ClientDashboard() {
         <p className="text-muted-foreground">No new notifications.</p>
       )}
     </div>
+    </>
   )
 }
