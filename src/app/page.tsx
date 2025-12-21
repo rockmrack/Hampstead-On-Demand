@@ -8,54 +8,67 @@ export default function Home() {
       <Navbar />
       <main className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#2c3e50] via-[#34495e] to-[#2c3e50] py-20 md:py-32 px-4 md:px-6">
-          <div className="max-w-6xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#8b7355] rounded-full text-white text-[10px] md:text-xs font-bold uppercase tracking-wider mb-6">
-              <span>⭐</span>
+        <section className="py-[180px] px-6 md:py-[100px] bg-gradient-to-br from-[#2c3e50] to-[#546e7a] relative overflow-hidden">
+          <div 
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+            }}
+          ></div>
+          
+          <div className="max-w-[1000px] mx-auto text-center relative z-10">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-[#8b7355] rounded-full text-white text-xs font-bold uppercase tracking-[0.12em] mb-8">
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
               <span>On-Demand Property Services</span>
-              <span>⭐</span>
+              <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
             </div>
             
-            <h1 className="font-heading text-3xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.2]">
-              Expert Tradespeople Available<br />
-              When You Need Them
+            <h1 className="font-heading text-[clamp(2rem,4.5vw,3.25rem)] text-white mb-6 leading-[1.2]">
+              Expert Tradespeople Available<br />When You Need Them
             </h1>
             
-            <p className="text-base md:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
+            <p className="text-lg text-white/90 max-w-[800px] mx-auto mb-10 leading-[1.8]">
               From emergency plumbing to routine maintenance, Hampstead On-Demand connects you with trusted local professionals. Fixed prices, instant booking, guaranteed quality.
             </p>
             
-            <ul className="flex flex-wrap justify-center gap-4 md:gap-6 mb-10 text-sm md:text-base">
-              <li className="flex items-center gap-2 text-white/95">
-                <svg className="w-5 h-5 text-[#8b7355]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+            <div className="flex flex-wrap justify-center gap-8 mb-10">
+              <div className="flex items-center gap-2 text-white/90 text-[0.9375rem] font-medium">
+                <svg className="w-5 h-5 fill-[#a0896d]" viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/></svg>
                 <span>Vetted Professionals</span>
-              </li>
-              <li className="flex items-center gap-2 text-white/95">
-                <svg className="w-5 h-5 text-[#8b7355]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+              </div>
+              <div className="flex items-center gap-2 text-white/90 text-[0.9375rem] font-medium">
+                <svg className="w-5 h-5 fill-[#a0896d]" viewBox="0 0 24 24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24z"/></svg>
                 <span>Fixed Transparent Pricing</span>
-              </li>
-              <li className="flex items-center gap-2 text-white/95">
-                <svg className="w-5 h-5 text-[#8b7355]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+              </div>
+              <div className="flex items-center gap-2 text-white/90 text-[0.9375rem] font-medium">
+                <svg className="w-5 h-5 fill-[#a0896d]" viewBox="0 0 24 24"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
                 <span>Instant Availability</span>
-              </li>
-              <li className="flex items-center gap-2 text-white/95">
-                <svg className="w-5 h-5 text-[#8b7355]" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/></svg>
+              </div>
+              <div className="flex items-center gap-2 text-white/90 text-[0.9375rem] font-medium">
+                <svg className="w-5 h-5 fill-[#a0896d]" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l4.59-4.58L18 11l-6 6z"/></svg>
                 <span>Quality Guaranteed</span>
-              </li>
-            </ul>
+              </div>
+            </div>
             
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link
-                href="/services"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#8b7355] text-white font-semibold rounded-md hover:bg-[#9d8466] transition-all shadow-lg uppercase tracking-wide text-sm"
-              >
-                Book Service Now
-              </Link>
+            <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="tel:07459345456"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#2c3e50] font-semibold rounded-md hover:bg-gray-100 transition-all shadow-lg uppercase tracking-wide text-sm"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#8b7355] text-white font-semibold rounded uppercase tracking-[0.05em] text-sm transition-all hover:bg-[#9d8466] hover:-translate-y-0.5 shadow-lg"
               >
+                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                 Call 07459 345456
+              </Link>
+              <Link
+                href="https://wa.me/447459345456?text=Hello%2C%20I%27d%20like%20to%20book%20a%20service"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-[#2c3e50] font-semibold rounded uppercase tracking-[0.05em] text-sm transition-all hover:bg-[#f5f7f9] hover:-translate-y-0.5 shadow-lg"
+              >
+                WhatsApp Us
+              </Link>
+              <Link
+                href="#services"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white/50 text-white font-semibold rounded uppercase tracking-[0.05em] text-sm transition-all hover:bg-white/10"
+              >
+                View Services
               </Link>
             </div>
           </div>
