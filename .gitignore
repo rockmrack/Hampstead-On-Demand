@@ -33,6 +33,14 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Claude settings
+.claude/
+
 # Snyk Security Extension - AI Rules (auto-generated)
 .github\instructions\snyk_rules.instructions.md
 

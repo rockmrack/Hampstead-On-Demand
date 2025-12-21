@@ -21,6 +21,13 @@ const nextConfig = {
   reactStrictMode: true,
   // Improve production performance
   poweredByHeader: false,
+  // Skip pre-rendering errors during build (client components will render at runtime)
+  typescript: {
+    ignoreBuildErrors: false,
+  },
+  eslint: {
+    ignoreDuringBuilds: false,
+  },
 };
 
 // Sentry configuration options
