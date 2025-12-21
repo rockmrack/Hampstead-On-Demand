@@ -30,26 +30,15 @@ export default function ServicesList({ services, categoryFilter, searchQuery }: 
     show: { opacity: 1, y: 0 }
   };
 
-  const getCategoryColor = (category: string): string => {
-    const categoryMap: Record<string, string> = {
-      'Plumbing': 'bg-blue-500',
-      'Electrical': 'bg-amber-500',
-      'Handyman': 'bg-green-600',
-      'Carpentry': 'bg-amber-800',
-      'Painting': 'bg-purple-500',
-      'Roofing': 'bg-red-500',
-      'Drainage': 'bg-teal-500',
-      'Locksmith': 'bg-slate-700',
-      'Glazing': 'bg-cyan-500',
-      'HVAC': 'bg-cyan-600',
-      'Renovation': 'bg-slate-800',
-      'Seasonal': 'bg-orange-500',
-      'Landlord': 'bg-stone-600',
-      'Housekeeping': 'bg-pink-600',
-      'Gardens': 'bg-green-500',
-    };
-    return categoryMap[category] || 'bg-primary';
-  };
+  // Group services by category
+  const servicesByCategory = services.reduce((acc, service) => {
+    const category = service.category;
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(service);
+    return acc;
+  }, {} as Record<string, Service[]>);
 
   const isHousekeeping = categoryFilter === 'Housekeeping';
   const pageTitle = searchQuery
@@ -60,119 +49,199 @@ export default function ServicesList({ services, categoryFilter, searchQuery }: 
 
   return (
     <main 
-      className={`max-w-5xl mx-auto px-6 py-12 ${isHousekeeping ? 'bg-slate-50' : ''}`}
+      className="min-h-screen bg-white"
       role="main"
       aria-labelledby="services-heading"
     >
-      <div className="mb-12 text-center">
-        <h1 id="services-heading" className="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-heading text-primary">
-          {pageTitle}
-        </h1>
-        {isHousekeeping && (
-          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-white border border-border rounded-full shadow-premium text-sm font-medium text-foreground">
-            <span className="text-primary" aria-hidden="true">🛡️</span>
-            <span>Vetted, Insured &amp; Employed by Hampstead Renovations</span>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-primary via-primary-light to-primary py-20 px-6 text-white">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="inline-block text-xs font-bold tracking-widest uppercase text-accent-light mb-4">
+            Our Services
           </div>
-        )}
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-body">
-          Transparent pricing. No hidden fees. Book in seconds.
-        </p>
-      </div>
+          <h1 id="services-heading" className="font-heading text-4xl md:text-5xl mb-4">
+            {pageTitle}
+          </h1>
+          {isHousekeeping && (
+            <div className="mb-6 inline-flex items-center gap-2 px-5 py-2.5 bg-accent rounded-full text-sm font-bold">
+              <span aria-hidden="true">🛡️</span>
+              <span>Vetted, Insured & Employed Professionals</span>
+            </div>
+          )}
+          <p className="text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+            Transparent fixed pricing with no hidden fees. Expert tradespeople available when you need them.
+          </p>
+        </div>
+      </section>
 
-      <motion.div 
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="grid gap-6 md:grid-cols-2"
-        role="list"
-        aria-label={`${services.length} services available`}
-      >
-        {services.map((service) => (
-          <motion.div variants={item} key={service.id} role="listitem">
-            <Card
-              className="h-full flex flex-col hover:shadow-premium-hover transition-all duration-300 relative overflow-hidden shadow-premium border-border/50"
-              aria-labelledby={`service-title-${service.id}`}
-            >
-              <div
-                className={`absolute top-0 right-0 text-xs font-bold px-3 py-1 rounded-bl-lg z-10 ${getCategoryColor(service.category)} text-white`}
-                aria-label="Fixed price service"
-              >
-                Fixed Price
+      {/* Services Grid */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        {Object.keys(servicesByCategory).length > 1 ? (
+          // Multiple categories - show with category headers
+          Object.entries(servicesByCategory).map(([category, categoryServices]) => (
+            <div key={category} className="mb-16 last:mb-0">
+              <div className="flex items-center gap-4 mb-6 pb-3 border-b-2 border-grey-light">
+                <h2 className="font-body text-2xl font-bold text-primary">{category}</h2>
               </div>
-              <CardHeader>
-                <div className="flex justify-between items-start gap-4">
-                  <div>
-                    <Badge
-                      variant="secondary"
-                      className={`mb-2 ${getCategoryColor(service.category)} text-white border-0`}
+              
+              <motion.div 
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="grid gap-5 md:grid-cols-4"
+                role="list"
+              >
+                {categoryServices.map((service) => (
+                  <motion.div variants={item} key={service.id} role="listitem">
+                    <Card
+                      className="h-full flex flex-col hover:border-accent hover:shadow-lg transition-all hover:-translate-y-1 group relative overflow-hidden bg-white border border-grey-light rounded-lg"
+                      aria-labelledby={`service-title-${service.id}`}
                     >
-                      {service.category}
-                    </Badge>
-                    <CardTitle id={`service-title-${service.id}`} className="text-xl font-heading text-primary">
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent via-accent-light to-accent transform scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                      
+                      <CardHeader className="text-center pb-4">
+                        <div className="w-13 h-13 mx-auto mb-4 bg-gradient-to-br from-accent to-accent-light rounded-lg flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                          {getCategoryIcon(service.category)}
+                        </div>
+                        <CardTitle id={`service-title-${service.id}`} className="text-lg font-body font-bold text-primary mb-2">
+                          {service.title}
+                        </CardTitle>
+                        <CardDescription className="text-sm text-grey leading-relaxed">
+                          {service.description}
+                        </CardDescription>
+                      </CardHeader>
+                      
+                      <CardContent className="flex-1 text-center pb-4">
+                        <div className="flex items-center justify-center gap-2 text-sm text-grey mb-3">
+                          <Clock className="h-4 w-4" aria-hidden="true" />
+                          <span>{service.duration_minutes ? `${service.duration_minutes} mins` : service.duration}</span>
+                        </div>
+                        
+                        <span className="inline-block px-3 py-1.5 bg-grey-light text-accent text-sm font-bold rounded-full">
+                          From £{service.price}
+                        </span>
+                      </CardContent>
+                      
+                      <CardFooter className="pt-0">
+                        <Button asChild className="w-full group bg-accent hover:bg-accent-light shadow-md hover:shadow-lg transition-all text-white font-semibold uppercase tracking-wide text-xs">
+                          <Link
+                            href={`/book/${service.id}`}
+                            aria-label={`Book ${service.title} for £${service.price}`}
+                          >
+                            Book Now
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                          </Link>
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          ))
+        ) : (
+          // Single category or no filter - simple grid
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid gap-5 md:grid-cols-4"
+            role="list"
+            aria-label={`${services.length} services available`}
+          >
+            {services.map((service) => (
+              <motion.div variants={item} key={service.id} role="listitem">
+                <Card
+                  className="h-full flex flex-col hover:border-accent hover:shadow-lg transition-all hover:-translate-y-1 group relative overflow-hidden bg-white border border-grey-light rounded-lg"
+                  aria-labelledby={`service-title-${service.id}`}
+                >
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent via-accent-light to-accent transform scale-x-0 group-hover:scale-x-100 transition-transform"></div>
+                  
+                  <CardHeader className="text-center pb-4">
+                    <div className="w-13 h-13 mx-auto mb-4 bg-gradient-to-br from-accent to-accent-light rounded-lg flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
+                      {getCategoryIcon(service.category)}
+                    </div>
+                    <CardTitle id={`service-title-${service.id}`} className="text-lg font-body font-bold text-primary mb-2">
                       {service.title}
                     </CardTitle>
-                  </div>
-                </div>
-                <CardDescription className="text-base mt-2 font-body">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-                  <Clock className="h-4 w-4" aria-hidden="true" />
-                  <span aria-label={`Duration: ${service.duration_minutes ? `${service.duration_minutes} minutes` : service.duration}`}>
-                    {service.duration_minutes ? `${service.duration_minutes} mins` : service.duration}
-                  </span>
-                </div>
-                
-                <div className="mb-6 p-4 bg-muted/30 rounded-lg border border-border">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">Fixed Price</span>
-                    <span className="text-2xl font-bold text-accent font-heading" aria-label={`Price: £${service.price}`}>
-                      £{service.price}
+                    <CardDescription className="text-sm text-grey leading-relaxed">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent className="flex-1 text-center pb-4">
+                    <div className="flex items-center justify-center gap-2 text-sm text-grey mb-3">
+                      <Clock className="h-4 w-4" aria-hidden="true" />
+                      <span>{service.duration_minutes ? `${service.duration_minutes} mins` : service.duration}</span>
+                    </div>
+                    
+                    <span className="inline-block px-3 py-1.5 bg-grey-light text-accent text-sm font-bold rounded-full">
+                      From £{service.price}
                     </span>
-                  </div>
-                </div>
-
-                {service.features && service.features.length > 0 && (
-                  <ul className="space-y-2" aria-label="Service features">
-                    {service.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm">
-                        <Check className="h-4 w-4 text-green-500" aria-hidden="true" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </CardContent>
-              <CardFooter>
-                <Button asChild className="w-full group bg-accent hover:bg-accent/90 shadow-md hover:shadow-lg transition-all">
-                  <Link
-                    href={`/book/${service.id}`}
-                    aria-label={`Book ${service.title} for £${service.price}`}
-                  >
-                    Book Now
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
+                    
+                    {service.features && service.features.length > 0 && (
+                      <ul className="mt-4 space-y-1 text-xs text-left" aria-label="Service features">
+                        {service.features.slice(0, 3).map((feature, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <Check className="h-3 w-3 text-accent mt-0.5 flex-shrink-0" aria-hidden="true" />
+                            <span className="text-grey">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </CardContent>
+                  
+                  <CardFooter className="pt-0">
+                    <Button asChild className="w-full group bg-accent hover:bg-accent-light shadow-md hover:shadow-lg transition-all text-white font-semibold uppercase tracking-wide text-xs">
+                      <Link
+                        href={`/book/${service.id}`}
+                        aria-label={`Book ${service.title} for £${service.price}`}
+                      >
+                        Book Now
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                      </Link>
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            ))}
           </motion.div>
-        ))}
-      </motion.div>
+        )}
 
-      {services.length === 0 && (
-        <div className="text-center py-12" role="status" aria-live="polite">
-          <p className="text-muted-foreground">
-            {searchQuery
-              ? `No services found matching "${searchQuery}"`
-              : 'No services found in this category.'}
-          </p>
-          <Button variant="link" asChild className="mt-4">
-            <Link href="/services">View all services</Link>
-          </Button>
-        </div>
-      )}
+        {services.length === 0 && (
+          <div className="text-center py-20 bg-grey-light rounded-xl" role="status" aria-live="polite">
+            <p className="text-grey text-lg mb-4">
+              {searchQuery
+                ? `No services found matching "${searchQuery}"`
+                : 'No services found in this category.'}
+            </p>
+            <Button variant="default" asChild className="bg-accent hover:bg-accent-light">
+              <Link href="/services">View all services</Link>
+            </Button>
+          </div>
+        )}
+      </section>
     </main>
   );
+}
+
+function getCategoryIcon(category: string): string {
+  const iconMap: Record<string, string> = {
+    'Plumbing': '💧',
+    'Electrical': '⚡',
+    'Handyman': '🔧',
+    'Carpentry': '🪚',
+    'Painting': '🎨',
+    'Roofing': '🏠',
+    'Drainage': '🚰',
+    'Locksmith': '🔑',
+    'Glazing': '🪟',
+    'HVAC': '❄️',
+    'Renovation': '🏗️',
+    'Seasonal': '🍂',
+    'Landlord': '🏘️',
+    'Housekeeping': '🧹',
+    'Gardens': '🌿',
+  };
+  return iconMap[category] || '🔨';
 }
