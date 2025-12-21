@@ -1,0 +1,21 @@
+# Testing
+/coverage
+/test-results
+/playwright-report
+/.claude
+
+# Development
+.env.local
+.env*.local
+
+# Build artifacts
+/.next
+/out
+
+# Dependencies
+/node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
