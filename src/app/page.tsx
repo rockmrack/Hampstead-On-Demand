@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { AdvancedChatbot } from '@/components/AdvancedChatbot'
 
 export default function Home() {
   useEffect(() => {
@@ -1388,6 +1389,9 @@ export default function Home() {
         .cat-housekeeping { background: var(--cat-housekeeping); }
         .cat-gardens { background: var(--cat-gardens); }
       `}</style>
+
+      {/* Advanced Chatbot - Added directly to homepage */}
+      <AdvancedChatbot />
     </div>
   )
 }
