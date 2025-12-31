@@ -266,6 +266,7 @@ function generateResponse(userMessage: string, conversationHistory: Message[]): 
 
 export function AdvancedChatbot() {
   const [isOpen, setIsOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
@@ -289,6 +290,10 @@ export function AdvancedChatbot() {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     scrollToBottom()
@@ -450,8 +455,18 @@ export function AdvancedChatbot() {
     setTimeout(() => inputRef.current?.form?.requestSubmit(), 100)
   }
 
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return null
+  }
+
   return (
     <>
+      {/* DEBUG: Simple visibility test - Remove after confirming button works */}
+      <div className="fixed bottom-[200px] right-6 z-[9999] bg-red-500 text-white px-4 py-2 rounded text-xs">
+        Chat Loaded ✓
+      </div>
+
       {/* Advanced Chat Toggle Button */}
       <AnimatePresence>
         {!isOpen && (
