@@ -462,11 +462,6 @@ export function AdvancedChatbot() {
 
   return (
     <>
-      {/* DEBUG: Simple visibility test - Remove after confirming button works */}
-      <div className="fixed bottom-[200px] right-6 z-[9999] bg-red-500 text-white px-4 py-2 rounded text-xs">
-        Chat Loaded ✓
-      </div>
-
       {/* Advanced Chat Toggle Button */}
       <AnimatePresence>
         {!isOpen && (

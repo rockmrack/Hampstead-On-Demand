@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Libre_Baskerville, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
-import { AdvancedChatbot } from "@/components/AdvancedChatbot";
 
 const libreBaskerville = Libre_Baskerville({
   weight: ["400", "700"],
@@ -33,7 +32,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${sourceSans.variable} ${libreBaskerville.variable} font-body antialiased`}>
         {children}
-        <AdvancedChatbot />
         <Toaster />
       </body>
     </html>
