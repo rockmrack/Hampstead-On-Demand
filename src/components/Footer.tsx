@@ -103,6 +103,11 @@ export default function Footer() {
                   Create Account
                 </Link>
               </li>
+              <li>
+                <a href="https://hampsteadrenovations.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-accent-light transition-all hover:translate-x-1 inline-block">
+                  Looking for Major Builds? Visit Hampstead Renovations →
+                </a>
+              </li>
             </ul>
           </div>
 

@@ -94,13 +94,12 @@ export default function Home() {
         <div className="nav-inner">
           <button className="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
           <ul className="nav-list" id="navList">
-            <li><a href="/" className="nav-link">Renovations</a></li>
             <li><a href="#services" className="nav-link">All Services</a></li>
             <li><a href="#plumbing" className="nav-link">Plumbing</a></li>
             <li><a href="#electrical" className="nav-link">Electrical</a></li>
-            <li><a href="#housekeeping" className="nav-link">Cleaning</a></li>
+            <li><a href="#handyman" className="nav-link">Handyman</a></li>
+            <li><a href="#locksmith" className="nav-link">Locksmith</a></li>
             <li><a href="#gardens" className="nav-link">Gardens</a></li>
-            <li><a href="#contact" className="nav-link">Book Now</a></li>
           </ul>
         </div>
       </nav>
