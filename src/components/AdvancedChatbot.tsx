@@ -456,19 +456,20 @@ export function AdvancedChatbot() {
       <AnimatePresence>
         {!isOpen && (
           <motion.div
-            initial={{ scale: 0, opacity: 0 }}
+            initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            className="fixed bottom-24 md:bottom-6 right-6 z-50"
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed bottom-24 md:bottom-6 right-6 z-[9999]"
           >
-            <Button
+            <button
               onClick={() => setIsOpen(true)}
-              size="lg"
-              className="relative h-16 w-16 rounded-full shadow-2xl bg-gradient-to-br from-accent via-accent-light to-accent hover:scale-110 transition-all duration-300 group"
+              className="relative h-16 w-16 rounded-full shadow-2xl bg-gradient-to-br from-[#C19A5B] via-[#D4AF6A] to-[#C19A5B] hover:scale-110 transition-all duration-300 group border-4 border-white cursor-pointer"
               aria-label="Open AI assistant"
+              style={{ backgroundColor: '#C19A5B' }}
             >
               {/* Pulse animation */}
-              <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-20"></span>
+              <span className="absolute inset-0 rounded-full bg-[#C19A5B] animate-ping opacity-20"></span>
 
               {/* Unread badge */}
               {unreadCount > 0 && (
@@ -491,7 +492,7 @@ export function AdvancedChatbot() {
               <span className="absolute right-full mr-3 px-3 py-1.5 bg-gray-900 text-white text-sm rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                 💬 Chat with AI Assistant
               </span>
-            </Button>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -504,7 +505,7 @@ export function AdvancedChatbot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-24 md:bottom-6 right-6 z-50 w-[calc(100vw-3rem)] max-w-md"
+            className="fixed bottom-24 md:bottom-6 right-6 z-[9999] w-[calc(100vw-3rem)] max-w-md"
           >
             <Card className="flex flex-col h-[600px] max-h-[80vh] shadow-2xl border-2 overflow-hidden">
               {/* Premium Header */}
