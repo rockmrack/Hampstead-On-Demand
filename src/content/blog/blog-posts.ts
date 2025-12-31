@@ -489,8 +489,8 @@ If we're delayed beyond our estimated arrival time, we'll waive the call-out fee
   {
     id: '3',
     slug: 'boiler-service-hampstead-cost-guide',
-    title: 'Boiler Service Hampstead: Cost, What's Included & How Often? [2025 Guide]',
-    description: 'Complete guide to boiler servicing in Hampstead. Costs from £95, what's included, legal requirements for landlords, and how to choose a Gas Safe engineer.',
+    title: 'Boiler Service Hampstead: Cost, Whats Included and How Often? [2025 Guide]',
+    description: 'Complete guide to boiler servicing in Hampstead. Costs from £95, whats included, legal requirements for landlords, and how to choose a Gas Safe engineer.',
     category: 'Plumbing',
     tags: ['boiler service', 'Gas Safe', 'Hampstead', 'heating', 'landlord requirements'],
     publishedDate: '2025-01-13',
