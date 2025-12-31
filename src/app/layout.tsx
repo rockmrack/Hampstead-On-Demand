@@ -19,9 +19,9 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Hampstead On-Demand | Premium Property Services | North West London",
-  description: "North West London's trusted on-demand property service. Professional trades available instantly. Serving NW3, NW8, NW1, NW6, and surrounding areas since 2009.",
-  keywords: "property maintenance North West London, plumber Hampstead, electrician NW3, emergency repairs, property services London",
+  title: "Hampstead Maintenance | Premier Property Services | NW3, NW8, NW1, NW6",
+  description: "Hampstead's premier property maintenance service since 2009. Professional trades available on-demand. Serving NW3, NW8, NW1, NW6 and surrounding areas. Plumbing, electrical, handyman, locksmith & more.",
+  keywords: "property maintenance Hampstead, plumber NW3, electrician Hampstead, handyman NW8, locksmith NW1, emergency repairs Hampstead, property services North West London",
 };
 
 export default function RootLayout({

@@ -70,9 +70,9 @@ export default function Home() {
       {/* Header */}
       <header className="header" id="header">
         <div className="header-inner">
-          <a href="/" className="logo" aria-label="Hampstead On-Demand - Home">
-            <span className="logo-main">Hampstead On-Demand</span>
-            <span className="logo-tagline">Property Maintenance</span>
+          <a href="/" className="logo" aria-label="Hampstead Maintenance - Home">
+            <span className="logo-main">Hampstead Maintenance</span>
+            <span className="logo-tagline">On-Demand Property Services</span>
           </a>
           <div className="header-contact">
             <div className="header-address">
@@ -113,8 +113,8 @@ export default function Home() {
               Same-Day Bookings Available
               <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
             </div>
-            <h1 className="hero-title">Professional Property Maintenance On-Demand</h1>
-            <p className="hero-subtitle">From emergency plumbing to deep cleaning, our trusted local tradespeople handle all your property maintenance needs. Fixed prices. Vetted professionals. No call-out fees.</p>
+            <h1 className="hero-title">Hampstead's Premier Property Maintenance</h1>
+            <p className="hero-subtitle">Serving NW3, NW8, NW1 & NW6 since 2009. From emergency plumbing to handyman services, our trusted local tradespeople handle all your property maintenance needs. Fixed prices. Vetted professionals. No call-out fees.</p>
             <div className="hero-stats">
               <div className="hero-stat">
                 <div className="hero-stat-number">57</div>
@@ -1129,7 +1129,7 @@ export default function Home() {
         <div className="footer-inner">
           <div className="footer-grid">
             <div className="footer-column">
-              <h3>Hampstead On-Demand</h3>
+              <h3>Hampstead Maintenance</h3>
               <address>
                 Office & Showroom:<br />
                 Unit 3, Palace Court<br />
