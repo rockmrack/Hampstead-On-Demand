@@ -1,0 +1,28 @@
+# robots.txt for hampsteadmaintenance.co.uk
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /bookings
+
+# Sitemap location
+Sitemap: https://hampsteadmaintenance.co.uk/sitemap.xml
+
+# Crawl-delay for good citizenship
+Crawl-delay: 1
+
+# Specific bot permissions
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /dashboard
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /dashboard
