@@ -119,7 +119,7 @@ export function SimpleChatButton() {
             boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
             whiteSpace: 'nowrap',
           }}>
-            💬 AI Assistant • Always Available
+            💬 Ask
           </div>
           <button
             onClick={() => setIsOpen(true)}
