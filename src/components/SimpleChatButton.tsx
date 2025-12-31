@@ -165,27 +165,51 @@ export function SimpleChatButton() {
             overflow: 'hidden',
           }}
         >
-          {/* Header - NO CLOSE BUTTON */}
+          {/* Header with Minimize Button */}
           <div style={{
             background: 'linear-gradient(135deg, #2C3E50 0%, #3d5a80 50%, #C19A5B 100%)',
             color: 'white',
             padding: '20px',
             boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}>
-            <div style={{ fontWeight: 'bold', fontSize: '20px', marginBottom: '4px' }}>
-              🤖 AI Property Assistant
+            <div>
+              <div style={{ fontWeight: 'bold', fontSize: '20px', marginBottom: '4px' }}>
+                🤖 AI Property Assistant
+              </div>
+              <div style={{ fontSize: '13px', opacity: 0.95, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{
+                  width: '8px',
+                  height: '8px',
+                  backgroundColor: '#4ade80',
+                  borderRadius: '50%',
+                  display: 'inline-block',
+                  animation: 'pulse 2s infinite'
+                }}></span>
+                Online • Powered by Advanced AI • Always Available
+              </div>
             </div>
-            <div style={{ fontSize: '13px', opacity: 0.95, display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{
-                width: '8px',
-                height: '8px',
-                backgroundColor: '#4ade80',
-                borderRadius: '50%',
-                display: 'inline-block',
-                animation: 'pulse 2s infinite'
-              }}></span>
-              Online • Powered by Advanced AI • Always Available
-            </div>
+            <button
+              onClick={() => setIsOpen(false)}
+              style={{
+                background: 'rgba(255, 255, 255, 0.2)',
+                border: 'none',
+                color: 'white',
+                fontSize: '24px',
+                cursor: 'pointer',
+                padding: '8px 12px',
+                borderRadius: '8px',
+                transition: 'background 0.2s',
+                fontWeight: 'bold',
+              }}
+              onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)'}
+              onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'}
+              title="Minimize chat"
+            >
+              ━
+            </button>
           </div>
 
           {/* Messages */}
