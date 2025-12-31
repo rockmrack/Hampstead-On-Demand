@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Link from 'next/link'
 import { SimpleChatButton } from '@/components/SimpleChatButton'
 
 export default function Home() {
@@ -101,6 +102,7 @@ export default function Home() {
             <li><a href="#handyman" className="nav-link">Handyman</a></li>
             <li><a href="#locksmith" className="nav-link">Locksmith</a></li>
             <li><a href="#gardens" className="nav-link">Gardens</a></li>
+            <li><Link href="/blog" className="nav-link">Blog</Link></li>
           </ul>
         </div>
       </nav>
