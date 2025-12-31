@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { AdvancedChatbot } from '@/components/AdvancedChatbot'
+import { SimpleChatButton } from '@/components/SimpleChatButton'
 
 export default function Home() {
   useEffect(() => {
@@ -1390,8 +1390,8 @@ export default function Home() {
         .cat-gardens { background: var(--cat-gardens); }
       `}</style>
 
-      {/* Advanced Chatbot - Added directly to homepage */}
-      <AdvancedChatbot />
+      {/* Simple Chat Button - GUARANTEED TO WORK */}
+      <SimpleChatButton />
     </div>
   )
 }
