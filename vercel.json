@@ -1,4 +1,14 @@
 {
   "framework": "nextjs",
-  "regions": ["lhr1"]
+  "regions": ["lhr1"],
+  "rewrites": [
+    {
+      "source": "/locksmith",
+      "destination": "https://emergency-locksmith.vercel.app/locksmith"
+    },
+    {
+      "source": "/locksmith/(.*)",
+      "destination": "https://emergency-locksmith.vercel.app/locksmith/$1"
+    }
+  ]
 }
