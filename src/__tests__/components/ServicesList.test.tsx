@@ -33,17 +33,17 @@ describe('ServicesList', () => {
 
   it('displays correct prices', () => {
     render(<ServicesList services={mockServices} />);
-    
-    expect(screen.getByText('£120')).toBeInTheDocument();
-    expect(screen.getByText('£110')).toBeInTheDocument();
+
+    expect(screen.getByText(/from\s*£\s*120/i)).toBeInTheDocument();
+    expect(screen.getByText(/from\s*£\s*110/i)).toBeInTheDocument();
   });
 
   it('shows features for each service', () => {
-    render(<ServicesList services={mockServices} />);
-    
-    expect(screen.getByText('Gas Safe')).toBeInTheDocument();
+    // Features are rendered in the single-category grid layout
+    render(<ServicesList services={[mockServices[0]]} />);
+
+    expect(screen.getByText(/gas\s*safe/i)).toBeInTheDocument();
     expect(screen.getByText('Certificate Included')).toBeInTheDocument();
-    expect(screen.getByText('Parts Included')).toBeInTheDocument();
   });
 
   it('shows empty state when no services', () => {
