@@ -1,14 +1,16 @@
 {
   "framework": "nextjs",
   "regions": ["lhr1"],
-  "rewrites": [
+  "redirects": [
     {
       "source": "/locksmith",
-      "destination": "https://emergency-locksmith.vercel.app/locksmith"
+      "destination": "https://emergency-locksmith.vercel.app/",
+      "permanent": true
     },
     {
       "source": "/locksmith/:path*",
-      "destination": "https://emergency-locksmith.vercel.app/locksmith/:path*"
+      "destination": "https://emergency-locksmith.vercel.app/:path*",
+      "permanent": true
     }
   ]
 }
