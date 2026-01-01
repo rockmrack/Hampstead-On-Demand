@@ -1,3 +1,7 @@
+import { redirect } from 'next/navigation'
+
+export const dynamic = 'force-dynamic'
+
 type Props = {
   params: {
     path: string[]
@@ -6,11 +10,9 @@ type Props = {
 
 export default function LocksmithCatchAllPage({ params }: Props) {
   const suffix = Array.isArray(params.path) && params.path.length > 0 ? params.path.join('/') : ''
-  const src = suffix
+  const destination = suffix
     ? `https://emergency-locksmith.vercel.app/${suffix}`
     : 'https://emergency-locksmith.vercel.app/'
 
-  return (
-    <iframe title="Emergency Locksmith" src={src} className="w-full min-h-screen" style={{ border: 0 }} />
-  )
+  redirect(destination)
 }

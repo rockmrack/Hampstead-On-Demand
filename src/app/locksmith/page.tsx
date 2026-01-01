@@ -1,10 +1,7 @@
+import { redirect } from 'next/navigation'
+
+export const dynamic = 'force-dynamic'
+
 export default function LocksmithPage() {
-  return (
-    <iframe
-      title="Emergency Locksmith"
-      src="https://emergency-locksmith.vercel.app/"
-      className="w-full min-h-screen"
-      style={{ border: 0 }}
-    />
-  )
+  redirect('https://emergency-locksmith.vercel.app/')
 }
