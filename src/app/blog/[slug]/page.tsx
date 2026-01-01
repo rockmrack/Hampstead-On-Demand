@@ -101,15 +101,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <style jsx>{`
-        .related-card {
-          transition: transform 0.2s;
-        }
-        .related-card-link:hover .related-card {
-          transform: translateY(-4px);
-        }
-      `}</style>
-
       <div style={{ minHeight: '100vh', backgroundColor: '#fff' }}>
         {/* Header */}
         <header style={{
@@ -312,10 +303,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                   key={relatedPost.id}
                   href={`/blog/${relatedPost.slug}`}
                   style={{ textDecoration: 'none' }}
-                  className="related-card-link"
                 >
                   <article
-                    className="related-card"
                     style={{
                     backgroundColor: '#f8f9fa',
                     borderRadius: '12px',

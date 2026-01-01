@@ -7,38 +7,6 @@ export default function BlogPage() {
 
   return (
     <>
-      <style jsx>{`
-        .blog-card-featured {
-          background-color: white;
-          border-radius: 12px;
-          padding: 32px;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-          transition: transform 0.2s, box-shadow 0.2s;
-          cursor: pointer;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-        }
-        .blog-card-link:hover .blog-card-featured {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
-        .blog-card {
-          background-color: white;
-          border-radius: 12px;
-          padding: 24px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-          transition: transform 0.2s, box-shadow 0.2s;
-          cursor: pointer;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-        }
-        .blog-card-link:hover .blog-card {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-        }
-      `}</style>
       <div style={{ minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
         {/* Header */}
       <header style={{
@@ -76,9 +44,19 @@ export default function BlogPage() {
                   key={post.id}
                   href={`/blog/${post.slug}`}
                   style={{ textDecoration: 'none' }}
-                  className="blog-card-link"
                 >
-                  <article className="blog-card-featured">
+                  <article
+                    style={{
+                      backgroundColor: 'white',
+                      borderRadius: '12px',
+                      padding: '32px',
+                      boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                      cursor: 'pointer',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                    }}
+                  >
 
                     <div style={{
                       display: 'flex',
@@ -164,9 +142,19 @@ export default function BlogPage() {
                 key={post.id}
                 href={`/blog/${post.slug}`}
                 style={{ textDecoration: 'none' }}
-                className="blog-card-link"
               >
-                <article className="blog-card">
+                <article
+                  style={{
+                    backgroundColor: 'white',
+                    borderRadius: '12px',
+                    padding: '24px',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                    cursor: 'pointer',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
 
                   <div style={{
                     display: 'flex',
