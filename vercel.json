@@ -7,8 +7,8 @@
       "destination": "https://emergency-locksmith.vercel.app/locksmith"
     },
     {
-      "source": "/locksmith/(.*)",
-      "destination": "https://emergency-locksmith.vercel.app/locksmith/$1"
+      "source": "/locksmith/:path*",
+      "destination": "https://emergency-locksmith.vercel.app/locksmith/:path*"
     }
   ]
 }

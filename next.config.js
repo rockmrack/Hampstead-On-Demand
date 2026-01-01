@@ -60,6 +60,19 @@ const nextConfig = {
       },
     ];
   },
+
+  async rewrites() {
+    return [
+      {
+        source: '/locksmith',
+        destination: 'https://emergency-locksmith.vercel.app/locksmith',
+      },
+      {
+        source: '/locksmith/:path*',
+        destination: 'https://emergency-locksmith.vercel.app/locksmith/:path*',
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
