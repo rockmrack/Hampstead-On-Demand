@@ -100,7 +100,7 @@ export default function Home() {
             <li><a href="#plumbing" className="nav-link">Plumbing</a></li>
             <li><a href="#electrical" className="nav-link">Electrical</a></li>
             <li><a href="#handyman" className="nav-link">Handyman</a></li>
-            <li><a href="#locksmith" className="nav-link">Locksmith</a></li>
+            <li><a href="/locksmith" className="nav-link">Locksmith</a></li>
             <li><a href="#gardens" className="nav-link">Gardens</a></li>
             <li><Link href="/blog" className="nav-link">Blog</Link></li>
           </ul>
@@ -202,7 +202,7 @@ export default function Home() {
                 <a href="#painting" className="category-nav-link">🎨 Painting</a>
                 <a href="#roofing" className="category-nav-link">🏠 Roofing</a>
                 <a href="#drainage" className="category-nav-link">🌊 Drainage</a>
-                <a href="#locksmith" className="category-nav-link">🔐 Locksmith</a>
+                <a href="/locksmith" className="category-nav-link">🔐 Locksmith</a>
                 <a href="#glazing" className="category-nav-link">🪟 Glazing</a>
                 <a href="#ac" className="category-nav-link">❄️ Air Con</a>
                 <a href="#renovation" className="category-nav-link">🏗️ Renovation</a>
@@ -1159,7 +1159,7 @@ export default function Home() {
                 <a href="#handyman" className="footer-link">Handyman</a>
                 <a href="#housekeeping" className="footer-link">Housekeeping</a>
                 <a href="#gardens" className="footer-link">Gardens & Outdoors</a>
-                <a href="#locksmith" className="footer-link">Locksmith</a>
+                <a href="/locksmith" className="footer-link">Locksmith</a>
               </div>
             </div>
             <div className="footer-column">
