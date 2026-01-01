@@ -1,8 +1,5 @@
-'use client'
-
 import Link from 'next/link'
 import { blogPosts } from '@/content/blog/blog-posts'
-import { useState } from 'react'
 
 export default function BlogPage() {
   const featuredPosts = blogPosts.filter(post => post.featured)
