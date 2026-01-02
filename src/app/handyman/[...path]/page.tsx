@@ -12,7 +12,7 @@ type Props = {
 
 export default function HandymanCatchAllPage({ params }: Props) {
   const suffix = Array.isArray(params.path) && params.path.length > 0 ? params.path.join("/") : ""
-  const destination = suffix ? `${BASE}handyman/${suffix}` : `${BASE}handyman`
+  const destination = suffix ? `${BASE}${suffix}` : BASE
 
   useEffect(() => {
     window.location.replace(destination)

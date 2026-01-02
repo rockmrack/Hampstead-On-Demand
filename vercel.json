@@ -14,7 +14,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/handyman", "destination": "https://handyman-liard.vercel.app/handyman" },
-    { "source": "/handyman/(.*)", "destination": "https://handyman-liard.vercel.app/handyman/$1" }
+    { "source": "/handyman", "destination": "https://handyman-liard.vercel.app/" },
+    { "source": "/handyman/:path*", "destination": "https://handyman-liard.vercel.app/:path*" }
   ]
 }
