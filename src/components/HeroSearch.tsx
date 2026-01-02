@@ -29,7 +29,7 @@ export default function HeroSearch() {
     >
       <div
         className="absolute inset-0 bg-cover bg-center opacity-5"
-        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+        style={{ backgroundImage: "url('/hero-bg.svg')" }}
         aria-hidden="true"
       />
       <div className="relative max-w-5xl mx-auto text-center space-y-10">
