@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image";
 import Link from "next/link";
 import { Home, Search, Calendar, User, LogOut, Phone, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -57,11 +58,14 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-6 py-3.5 flex justify-between items-center">
           <Link
             href="/"
-            className="flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded transition-opacity hover:opacity-80"
+            className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded transition-opacity hover:opacity-80"
             aria-label="Hampstead On-Demand - Home"
           >
-            <span className="text-[22px] font-heading font-bold text-primary tracking-tight leading-none">Hampstead On-Demand</span>
-            <span className="text-[11px] font-semibold text-accent tracking-[0.15em] uppercase -mt-0.5">Property Services Since 2009</span>
+            <Image src="/logo.svg" alt="Hampstead On-Demand logo" width={38} height={38} priority />
+            <span className="flex flex-col">
+              <span className="text-[22px] font-heading font-bold text-primary tracking-tight leading-none">Hampstead On-Demand</span>
+              <span className="text-[11px] font-semibold text-accent tracking-[0.15em] uppercase -mt-0.5">Property Services Since 2009</span>
+            </span>
           </Link>
           
           <div className="hidden lg:flex items-center gap-6 text-grey text-sm">
@@ -178,9 +182,12 @@ export default function Navbar() {
       {/* Mobile Header - Simplified */}
       <header className="md:hidden fixed top-0 left-0 right-0 bg-white shadow-md z-50 px-4 py-3">
         <div className="flex justify-between items-center">
-          <Link href="/" className="flex flex-col">
-            <span className="text-lg font-heading font-bold text-primary">Hampstead On-Demand</span>
-            <span className="text-[9px] font-semibold text-accent tracking-wider uppercase">Property Services</span>
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/logo.svg" alt="Hampstead On-Demand logo" width={28} height={28} priority />
+            <span className="flex flex-col">
+              <span className="text-lg font-heading font-bold text-primary">Hampstead On-Demand</span>
+              <span className="text-[9px] font-semibold text-accent tracking-wider uppercase">Property Services</span>
+            </span>
           </Link>
           <Link
             href="tel:07459345456"

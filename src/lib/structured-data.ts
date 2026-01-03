@@ -8,7 +8,7 @@ export const organizationSchema = {
   alternateName: 'Hampstead On-Demand Property Services',
   description: 'Premier property maintenance and repair services in Hampstead and North West London since 2009. Plumbing, electrical, handyman, locksmith, cleaning, and garden services available on-demand.',
   url: 'https://hampsteadmaintenance.co.uk',
-  logo: 'https://hampsteadmaintenance.co.uk/logo.png',
+  logo: 'https://hampsteadmaintenance.co.uk/logo.svg',
   image: 'https://hampsteadmaintenance.co.uk/og-image.jpg',
   telephone: '+44-7459-345456',
   email: 'info@hampsteadmaintenance.co.uk',

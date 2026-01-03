@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <!-- Simple, clean mark: home + tools (original) -->
+  <rect x="56" y="56" width="400" height="400" rx="112" stroke="#111827" stroke-width="20"/>
+
+  <!-- Roof -->
+  <path d="M156 256 L256 176 L356 256" stroke="#111827" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- House body -->
+  <path d="M188 244 V348 C188 372 208 392 232 392 H280 C304 392 324 372 324 348 V244" stroke="#111827" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Door -->
+  <path d="M244 392 V320 C244 309 253 300 264 300 H268 C279 300 288 309 288 320 V392" stroke="#111827" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Subtle crossed tools behind the roofline -->
+  <path d="M176 204 L128 156" stroke="#111827" stroke-width="20" stroke-linecap="round" opacity="0.85"/>
+  <path d="M336 204 L384 156" stroke="#111827" stroke-width="20" stroke-linecap="round" opacity="0.85"/>
+</svg>
