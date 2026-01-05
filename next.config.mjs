@@ -28,19 +28,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
-
-  async rewrites() {
-    return [
-      {
-        source: '/locksmith',
-        destination: 'https://emergency-locksmith.vercel.app/locksmith',
-      },
-      {
-        source: '/locksmith/:path*',
-        destination: 'https://emergency-locksmith.vercel.app/locksmith/:path*',
-      },
-    ];
-  },
 };
 
 // Sentry configuration options
