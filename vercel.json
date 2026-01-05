@@ -1,14 +1,20 @@
 {
   "framework": "nextjs",
   "regions": ["lhr1"],
-  "rewrites": [
+  "redirects": [
     {
       "source": "/locksmith",
-      "destination": "https://emergency-locksmith.vercel.app/locksmith"
+      "destination": "https://emergency-locksmith.vercel.app/",
+      "permanent": false
     },
     {
       "source": "/locksmith/:path*",
-      "destination": "https://emergency-locksmith.vercel.app/locksmith/:path*"
+      "destination": "https://emergency-locksmith.vercel.app/:path*",
+      "permanent": false
     }
+  ],
+  "rewrites": [
+    { "source": "/handyman", "destination": "https://handyman-liard.vercel.app/" },
+    { "source": "/handyman/:path*", "destination": "https://handyman-liard.vercel.app/:path*" }
   ]
 }
