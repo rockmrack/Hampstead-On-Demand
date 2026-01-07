@@ -31,10 +31,38 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" style={{ visibility: 'visible' }}>
+      <head>
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            html { visibility: visible !important; }
+            body {
+              visibility: hidden !important;
+              opacity: 0 !important;
+            }
+            body.hydrated {
+              visibility: visible !important;
+              opacity: 1 !important;
+              transition: opacity 0.15s ease-in;
+            }
+          `
+        }} />
+      </head>
       <body className={`${sourceSans.variable} ${libreBaskerville.variable} font-body antialiased`} style={{ minHeight: '100vh', backgroundColor: '#ffffff' }}>
         {children}
         <Toaster />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            if (typeof window !== 'undefined') {
+              window.addEventListener('load', function() {
+                document.body.classList.add('hydrated');
+              });
+              if (document.readyState === 'complete') {
+                document.body.classList.add('hydrated');
+              }
+            }
+          `
+        }} />
       </body>
     </html>
   );
