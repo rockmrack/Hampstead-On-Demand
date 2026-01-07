@@ -7,14 +7,16 @@ const libreBaskerville = Libre_Baskerville({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-heading",
-  display: "swap",
+  display: "optional",
+  preload: true,
 });
 
 const sourceSans = Source_Sans_3({
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-body",
-  display: "swap",
+  display: "optional",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -30,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sourceSans.variable} ${libreBaskerville.variable} font-body antialiased`}>
+      <body className={`${sourceSans.variable} ${libreBaskerville.variable} font-body antialiased`} style={{ minHeight: '100vh', backgroundColor: '#ffffff' }}>
         {children}
         <Toaster />
       </body>

@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prevent FOUC - hide body until CSS loads */
+html {
+  visibility: visible;
+  opacity: 1;
+}
+body {
+  visibility: visible;
+  opacity: 1;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
