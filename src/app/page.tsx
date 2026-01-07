@@ -99,8 +99,8 @@ export default function Home() {
             <li><a href="#services" className="nav-link">All Services</a></li>
             <li><a href="#plumbing" className="nav-link">Plumbing</a></li>
             <li><a href="#electrical" className="nav-link">Electrical</a></li>
-            <li><a href="#handyman" className="nav-link">Handyman</a></li>
-            <li><a href="#locksmith" className="nav-link">Locksmith</a></li>
+            <li><a href="https://handyman-liard.vercel.app/handyman" target="_blank" rel="noopener noreferrer" className="nav-link">Handyman</a></li>
+            <li><Link href="/locksmith" className="nav-link">Locksmith</Link></li>
             <li><a href="#gardens" className="nav-link">Gardens</a></li>
             <li><Link href="/blog" className="nav-link">Blog</Link></li>
           </ul>
@@ -197,12 +197,12 @@ export default function Home() {
               <div className="category-nav-list">
                 <a href="#plumbing" className="category-nav-link">🔧 Plumbing</a>
                 <a href="#electrical" className="category-nav-link">⚡ Electrical</a>
-                <a href="#handyman" className="category-nav-link">🔨 Handyman</a>
+                <a href="https://handyman-liard.vercel.app/handyman" target="_blank" rel="noopener noreferrer" className="category-nav-link">🔨 Handyman</a>
                 <a href="#carpentry" className="category-nav-link">🪚 Carpentry</a>
                 <a href="#painting" className="category-nav-link">🎨 Painting</a>
                 <a href="#roofing" className="category-nav-link">🏠 Roofing</a>
                 <a href="#drainage" className="category-nav-link">🌊 Drainage</a>
-                <a href="#locksmith" className="category-nav-link">🔐 Locksmith</a>
+                <a href="/locksmith" className="category-nav-link">🔐 Locksmith</a>
                 <a href="#glazing" className="category-nav-link">🪟 Glazing</a>
                 <a href="#ac" className="category-nav-link">❄️ Air Con</a>
                 <a href="#renovation" className="category-nav-link">🏗️ Renovation</a>
@@ -1156,10 +1156,10 @@ export default function Home() {
               <div className="footer-links">
                 <a href="#plumbing" className="footer-link">Plumbing & Heating</a>
                 <a href="#electrical" className="footer-link">Electrical</a>
-                <a href="#handyman" className="footer-link">Handyman</a>
+                <a href="https://handyman-liard.vercel.app/handyman" target="_blank" rel="noopener noreferrer" className="footer-link">Handyman</a>
                 <a href="#housekeeping" className="footer-link">Housekeeping</a>
                 <a href="#gardens" className="footer-link">Gardens & Outdoors</a>
-                <a href="#locksmith" className="footer-link">Locksmith</a>
+                <a href="/locksmith" className="footer-link">Locksmith</a>
               </div>
             </div>
             <div className="footer-column">
