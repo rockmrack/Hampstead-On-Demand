@@ -24,6 +24,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'emergency-lockout',
   ]
 
+  // Location areas for local SEO
+  const areas = [
+    'hampstead-nw3',
+    'st-johns-wood-nw8',
+    'camden-nw1',
+    'west-hampstead-nw6',
+    'primrose-hill',
+    'belsize-park',
+    'swiss-cottage',
+    'kilburn-nw6',
+  ]
+
+  // Emergency services pages
+  const emergencyPages = [
+    'emergency-plumber-hampstead',
+    'emergency-locksmith-nw3',
+    'emergency-electrician-london',
+    '24-hour-boiler-repair',
+  ]
+
   // Blog posts (will be dynamically generated)
   const blogPosts = Array.from({ length: 100 }, (_, i) => ({
     url: `${baseUrl}/blog/post-${i + 1}`,
@@ -63,12 +83,45 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // New pages
+    {
+      url: `${baseUrl}/quote`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/landlord`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.85,
+    },
     // Service pages
     ...services.map((service) => ({
       url: `${baseUrl}/services/${service}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
+    })),
+    // Location area pages
+    ...areas.map((area) => ({
+      url: `${baseUrl}/areas/${area}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.85,
+    })),
+    // Emergency pages (high priority)
+    ...emergencyPages.map((page) => ({
+      url: `${baseUrl}/emergency/${page}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
     })),
     // Blog posts
     ...blogPosts,

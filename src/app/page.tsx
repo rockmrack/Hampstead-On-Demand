@@ -3,6 +3,9 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { SimpleChatButton } from '@/components/SimpleChatButton'
+import WhatsAppButton from '@/components/WhatsAppButton'
+import TrustBadges from '@/components/TrustBadges'
+import ReviewsSection from '@/components/ReviewsSection'
 
 export default function Home() {
   useEffect(() => {
@@ -1392,8 +1395,17 @@ export default function Home() {
         .cat-gardens { background: var(--cat-gardens); }
       `}</style>
 
+      {/* Trust Badges Section */}
+      <TrustBadges />
+      
+      {/* Customer Reviews Section */}
+      <ReviewsSection />
+
       {/* Simple Chat Button - GUARANTEED TO WORK */}
       <SimpleChatButton />
+      
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
     </div>
   )
 }
