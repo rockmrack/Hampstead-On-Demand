@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 
 // Area data for location-specific landing pages
@@ -70,28 +71,6 @@ const areas = {
 }
 
 type AreaKey = keyof typeof areas
-
-export async function generateStaticParams() {
-  return Object.keys(areas).map((area) => ({
-    area,
-  }))
-}
-
-export async function generateMetadata({ params }: { params: { area: string } }): Promise<Metadata> {
-  const areaData = areas[params.area as AreaKey]
-  
-  if (!areaData) {
-    return {
-      title: 'Area Not Found | Hampstead Maintenance',
-    }
-  }
-
-  return {
-    title: `Property Maintenance ${areaData.name} ${areaData.postcode} | Plumber, Electrician, Handyman`,
-    description: `Professional property maintenance in ${areaData.name} (${areaData.postcode}). Emergency plumber, electrician, locksmith & handyman. ${areaData.responseTime} response. DBS checked. Call 07459 345456`,
-    keywords: `plumber ${areaData.name}, electrician ${areaData.postcode}, handyman ${areaData.name}, locksmith ${areaData.postcode}, property maintenance ${areaData.name}`,
-  }
-}
 
 export default function AreaPage({ params }: { params: { area: string } }) {
   const areaData = areas[params.area as AreaKey]

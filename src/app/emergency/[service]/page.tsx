@@ -1,4 +1,5 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 
 // Emergency page data
@@ -110,26 +111,6 @@ const emergencyServices = {
 }
 
 type EmergencyKey = keyof typeof emergencyServices
-
-export async function generateStaticParams() {
-  return Object.keys(emergencyServices).map((service) => ({
-    service,
-  }))
-}
-
-export async function generateMetadata({ params }: { params: { service: string } }): Promise<Metadata> {
-  const data = emergencyServices[params.service as EmergencyKey]
-  
-  if (!data) {
-    return { title: 'Emergency Service | Hampstead Maintenance' }
-  }
-
-  return {
-    title: `${data.title} | ${data.response} Response | Call Now`,
-    description: data.description,
-    keywords: data.keywords,
-  }
-}
 
 export default function EmergencyPage({ params }: { params: { service: string } }) {
   const data = emergencyServices[params.service as EmergencyKey]

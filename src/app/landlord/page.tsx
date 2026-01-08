@@ -1,11 +1,6 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Landlord Property Maintenance Services | Hampstead Maintenance',
-  description: 'Dedicated property maintenance for landlords and letting agents across North West London. EICR certificates, Gas Safety, emergency response, and multi-property discounts.',
-  keywords: 'landlord maintenance services, property management NW3, letting agent maintenance, EICR certificate London, Gas Safety certificate landlord',
-}
+import Link from 'next/link'
 
 const services = [
   {

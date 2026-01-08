@@ -3,9 +3,6 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { SimpleChatButton } from '@/components/SimpleChatButton'
-import WhatsAppButton from '@/components/WhatsAppButton'
-import TrustBadges from '@/components/TrustBadges'
-import ReviewsSection from '@/components/ReviewsSection'
 
 export default function Home() {
   useEffect(() => {
@@ -1396,16 +1393,16 @@ export default function Home() {
       `}</style>
 
       {/* Trust Badges Section */}
-      <TrustBadges />
-      
+      {/* <TrustBadges /> */}
+
       {/* Customer Reviews Section */}
-      <ReviewsSection />
+      {/* <ReviewsSection /> */}
 
       {/* Simple Chat Button - GUARANTEED TO WORK */}
       <SimpleChatButton />
-      
+
       {/* WhatsApp Button */}
-      <WhatsAppButton />
+      {/* <WhatsAppButton /> */}
     </div>
   )
 }
