@@ -79,13 +79,13 @@ export default function Navbar() {
           </div>
 
           <div className="flex gap-4 items-center">
-            <Link
-              href="tel:07459345456"
-              className="flex items-center gap-2 text-primary font-semibold hover:text-accent transition-colors"
-            >
+            <div className="flex items-center gap-3 text-primary font-semibold">
               <Phone className="w-[18px] h-[18px]" />
-              <span className="text-[15px]">07459 345456</span>
-            </Link>
+              <div className="flex flex-col text-[13px] leading-tight">
+                <a href="tel:02038742670" className="hover:text-accent transition-colors">020 3874 2670</a>
+                <a href="tel:07459345456" className="hover:text-accent transition-colors">07459 345456</a>
+              </div>
+            </div>
             
             <Link
               href="/services"
@@ -189,13 +189,13 @@ export default function Navbar() {
               <span className="text-[9px] font-semibold text-accent tracking-wider uppercase">Property Services</span>
             </span>
           </Link>
-          <Link
-            href="tel:07459345456"
+          <a
+            href="tel:02038742670"
             className="flex items-center gap-1.5 px-3 py-2 bg-accent text-white rounded text-sm font-semibold"
           >
             <Phone className="w-4 h-4" />
             <span>Call</span>
-          </Link>
+          </a>
         </div>
       </header>
 

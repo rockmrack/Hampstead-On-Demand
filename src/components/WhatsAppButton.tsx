@@ -19,7 +19,7 @@ export function WhatsAppButton() {
 
   const openWhatsApp = (template: keyof typeof serviceTemplates) => {
     const message = encodeURIComponent(serviceTemplates[template])
-    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
+    window.open(`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`, '_blank')
     setShowMenu(false)
   }
 

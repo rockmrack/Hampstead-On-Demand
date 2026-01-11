@@ -227,7 +227,7 @@ export default function BlogPage() {
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a
-              href="tel:07459345456"
+              href="tel:02038742670"
               style={{
                 backgroundColor: '#C19A5B',
                 color: 'white',
@@ -238,7 +238,7 @@ export default function BlogPage() {
                 fontSize: '16px',
               }}
             >
-              📞 Call: 07459 345456
+              📞 Call: 020 3874 2670
             </a>
             <Link
               href="/services"

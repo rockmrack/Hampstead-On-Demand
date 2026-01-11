@@ -115,13 +115,13 @@ export default function Footer() {
           <div>
             <h4 className="text-accent-light font-body font-bold text-lg mb-5">Contact Us</h4>
             <div className="space-y-3 font-body">
-              <a 
-                href="tel:07459345456" 
-                className="flex items-center gap-2 text-sm text-white/70 hover:text-accent-light transition-colors group"
-              >
-                <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                <span className="font-semibold">07459 345456</span>
-              </a>
+              <div className="flex items-center gap-2 text-sm text-white/70">
+                <Phone className="w-4 h-4" />
+                <div className="flex flex-col">
+                  <a href="tel:02038742670" className="font-semibold hover:text-accent-light transition-colors">020 3874 2670</a>
+                  <a href="tel:07459345456" className="font-semibold hover:text-accent-light transition-colors">07459 345456</a>
+                </div>
+              </div>
               <a 
                 href="mailto:contact@hampstead-ondemand.com" 
                 className="flex items-center gap-2 text-sm text-white/70 hover:text-accent-light transition-colors group break-all"

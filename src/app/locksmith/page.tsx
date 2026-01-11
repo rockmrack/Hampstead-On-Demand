@@ -34,7 +34,7 @@ export default function LocksmithPage() {
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a
-              href="tel:07459345456"
+              href="tel:02038742670"
               style={{
                 backgroundColor: '#C19A5B',
                 color: 'white',
@@ -48,7 +48,7 @@ export default function LocksmithPage() {
                 gap: '8px',
               }}
             >
-              📞 Call Now: 07459 345456
+              📞 Call: 020 3874 2670 / 07459 345456
             </a>
             <a
               href="#services"
@@ -198,7 +198,7 @@ export default function LocksmithPage() {
                   {service.desc}
                 </p>
                 <a
-                  href="tel:07459345456"
+                  href="tel:02038742670"
                   style={{
                     display: 'block',
                     textAlign: 'center',
@@ -276,7 +276,7 @@ export default function LocksmithPage() {
             Don't wait outside in the cold. Call us now for immediate assistance.
           </p>
           <a
-            href="tel:07459345456"
+            href="tel:02038742670"
             style={{
               backgroundColor: 'white',
               color: '#C19A5B',
@@ -288,7 +288,7 @@ export default function LocksmithPage() {
               display: 'inline-block',
             }}
           >
-            📞 Call 07459 345456 Now
+            📞 Call 020 3874 2670 Now
           </a>
         </div>
       </section>

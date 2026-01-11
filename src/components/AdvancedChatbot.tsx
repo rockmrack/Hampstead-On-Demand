@@ -167,7 +167,7 @@ function generateResponse(userMessage: string, conversationHistory: Message[]): 
   if (sentiment === 'urgent') {
     const emergencyServices = findMatchingServices(userMessage)
     return {
-      content: "🚨 **EMERGENCY PRIORITY** 🚨\n\nI understand this is urgent! For immediate assistance:\n\n📞 **Call Now: 07459 345456**\n⚡ 30-60 minute response time\n\nMeanwhile, here are relevant services you can book:",
+      content: "🚨 **EMERGENCY PRIORITY** 🚨\n\nI understand this is urgent! For immediate assistance:\n\n📞 **Call Now: 020 3874 2670** (Landline)\n📱 **Or Mobile: 07459 345456**\n⚡ 30-60 minute response time\n\nMeanwhile, here are relevant services you can book:",
       suggestions: emergencyServices.length > 0 ? emergencyServices : [
         { id: 'bf04c567-a58a-47af-aaf1-f2d6a4cd9a60', title: 'Gain Entry (Standard)', price: 140, category: 'Locksmith & Security', urgent: true, rating: 4.9 },
         { id: 'f151ccfc-0b3c-422e-aafe-0ed073615b6b', title: 'Toilet Unblock', price: 160, category: 'Plumbing & Heating', urgent: true, rating: 4.7 },
@@ -229,7 +229,7 @@ function generateResponse(userMessage: string, conversationHistory: Message[]): 
   // Thank you with follow-up
   if (/(thank|thanks|cheers|ta|appreciate|grateful)/i.test(messageLower)) {
     return {
-      content: "You're very welcome! 😊\n\nIs there anything else I can help you with?\n\n💡 **Pro tip:** Save our number: 07459 345456 for emergencies!",
+      content: "You're very welcome! 😊\n\nIs there anything else I can help you with?\n\n💡 **Pro tip:** Save our numbers: 020 3874 2670 (Landline) or 07459 345456 (Mobile) for emergencies!",
       suggestions: []
     }
   }

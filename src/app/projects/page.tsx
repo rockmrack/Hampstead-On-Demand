@@ -193,7 +193,7 @@ export default function ProjectsPage() {
           <p>Get a free quote for your project today</p>
           <div className="cta-buttons">
             <Link href="/quote" className="btn btn-primary">Get Instant Quote</Link>
-            <a href="tel:07459345456" className="btn btn-outline">Call 07459 345456</a>
+            <a href="tel:02038742670" className="btn btn-outline">Call 020 3874 2670</a>
           </div>
         </div>
       </section>

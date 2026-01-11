@@ -106,8 +106,8 @@ export default function AreaPage({ params }: { params: { area: string } }) {
             <span>Average response: <strong>{areaData.responseTime}</strong></span>
           </div>
           <div className="hero-actions">
-            <a href="tel:07459345456" className="btn btn-primary">
-              📞 Call 07459 345456
+            <a href="tel:02038742670" className="btn btn-primary">
+              📞 Call 020 3874 2670
             </a>
             <Link href="/quote" className="btn btn-outline">
               Get Instant Quote
@@ -127,7 +127,7 @@ export default function AreaPage({ params }: { params: { area: string } }) {
                 <h3>{service.name}</h3>
                 <p className="service-price">{service.price}</p>
                 <p className="service-time">{service.time}</p>
-                <a href="tel:07459345456" className="book-btn">Book Now</a>
+                <a href="tel:02038742670" className="book-btn">Book Now</a>
               </div>
             ))}
           </div>
@@ -161,8 +161,8 @@ export default function AreaPage({ params }: { params: { area: string } }) {
         <div className="section-inner">
           <h2>🚨 Emergency in {areaData.name}?</h2>
           <p>Burst pipe? Power outage? Locked out? We're on our way.</p>
-          <a href="tel:07459345456" className="emergency-btn">
-            Call Now: 07459 345456
+          <a href="tel:02038742670" className="emergency-btn">
+            Call Now: 020 3874 2670
           </a>
           <p className="availability">Available 24/7 including weekends & bank holidays</p>
         </div>
